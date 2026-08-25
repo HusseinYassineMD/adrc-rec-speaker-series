@@ -1,0 +1,1350 @@
+{
+  "2025-2026": {
+    "label": "ADRC REC 2025-2026",
+    "entries": [
+      {
+        "id": "2025-2026-1",
+        "name": "Yassine, Hussein",
+        "email": "hyassine@usc.edu",
+        "date": "2025-09-19",
+        "title": "\"Career development in Alzheimer\u2019s Research\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-2",
+        "name": "Rhea, Elizabeth",
+        "email": "meredime@uw.edu",
+        "date": "2025-09-26",
+        "title": "\"Targeting brain insulin signaling in Alzheimer\u2019s: A focus on the BBB\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-3",
+        "name": "Jones, David",
+        "email": "Jones.David@mayo.edu",
+        "date": "2025-10-03",
+        "title": "\"The intersection of FDG-PET and dementia associated biology in clinical decision making\"",
+        "talkType": "Invited Speaker [by Dr. Ringman]"
+      },
+      {
+        "id": "2025-2026-4",
+        "name": "Ulmer, Tobias",
+        "email": "tulmer@usc.edu",
+        "date": "2025-10-10",
+        "title": "\"Structural biology of receptors controlling innate immunity in Alzheimer's disease\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-5",
+        "name": "Hassenstab, Jason",
+        "email": "hassenstabj@wustl.edu",
+        "date": "2025-10-17",
+        "title": "\"What Can We Learn from High-Frequency Digital Assessments?\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-6",
+        "name": "Ringman, John",
+        "email": "John.Ringman@med.usc.edu",
+        "date": "2025-10-24",
+        "title": "\"Writing Grant Applications for Observational Studies\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-7",
+        "name": "Rust, Ruslan",
+        "email": "rrust@usc.edu",
+        "date": "2025-10-31",
+        "title": "\"Pericyte-based therapy to treat Alzheimer\u2019s disease\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-8",
+        "name": "Luchsinger, Jose A",
+        "email": "jal94@cumc.columbia.edu",
+        "date": "2025-11-07",
+        "title": "\"Diabetes, related strategies and AD/ADRD\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-9",
+        "name": "Ma, Quilan",
+        "email": "qiulanma@usc.edu",
+        "date": "2025-11-14",
+        "title": "\u201cMechanisms of cytosolic phospholipase A2-Meditated Synapse Loss in Alzheimer\u2019s Disease\u201d",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-10",
+        "name": "Sneed, Rodlescia",
+        "email": "sneedrod@wayne.edu",
+        "date": "2025-11-21",
+        "title": "\"Research After Lockup: Why ADRD Scientists Should Care About Incarceration\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-11",
+        "name": "Kassandra Kisler Elliott",
+        "email": "kislerel@usc.edu",
+        "date": "2025-12-05",
+        "title": "\"Alzheimer's Disease risk factors APOE4 and PICALM at the blood-brain barrier\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-12",
+        "name": "Yassine, Hussein",
+        "email": "hyassine@usc.edu",
+        "date": "2025-12-12",
+        "title": "\"Updates from CTAD 2025\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-13",
+        "name": "Macauley-Rambach, Shannon L.",
+        "email": "Shannon.Macauley@uky.edu",
+        "date": "2025-12-19",
+        "title": "\"Microglial lactate dynamics link amyloid pathology to slow-wave sleep loss in Alzheimer\u2019s disease\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-14",
+        "name": "Shiaoyu Shi",
+        "email": "xiaoyu.shi@uci.edu",
+        "date": "2026-01-09",
+        "title": "\"GEMclear: An Accurate Approach for Spatial Proteomics of Organelles and Cell Types in AD\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-15",
+        "name": "Marcelo P. Coba",
+        "email": "coba@usc.edu",
+        "date": "2026-01-16",
+        "title": "\"Apoe and Tau interactions in vascular and synaptic and  dysfunction\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-16",
+        "name": "Langen, Ralf",
+        "email": "langen@med.usc.edu",
+        "date": "2026-01-23",
+        "title": "\"Mechanistic Pathways of Huntingtin Exon-1 Misfolding: Targeting Aggregation Intermediates with Conformationally-Selective Binders\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-17",
+        "name": "Max Thorwald",
+        "email": "thorwald@usc.edu",
+        "date": "2026-01-30",
+        "title": "\"Iron bound amyloid plaques\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-18",
+        "name": "Nichole Lighthall",
+        "email": "nichole.lighthall@ucf.edu",
+        "date": "2026-02-06",
+        "title": "\"Decision making in aging and ADRD across in-person and digital contexts\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-19",
+        "name": "Alyssa Ann Gamaldo-Roddy",
+        "email": "agamald@clemson.edu",
+        "date": "2026-02-13",
+        "title": "\"Thinking Inside the Digital Box: Leveraging Digital Tools to Assess Determinants of Cognitive Health in at Risk Populations\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-20",
+        "name": "Kendra Seaman",
+        "email": "kendra.seaman@UTDallas.edu",
+        "date": "2026-02-20",
+        "title": "\"Socioemotional Influences on Decision Making across Adulthood\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-21",
+        "name": "Debbie Yee",
+        "email": "debbie_yee@brown.edu",
+        "date": "2026-02-27",
+        "title": "\"Neurocomputational mechanisms of motivation, affect, and cognitive\u00a0control\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-22",
+        "name": "Cristina A. F. Rom\u00e1n",
+        "email": "cristina.a.roman@gmail.com",
+        "date": "2026-03-06",
+        "title": "\"Aging and Dementia in Multiple Sclerosis: Examining the Past and Present and What's Possible for the Future\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-23",
+        "name": "Bilal Kerman",
+        "email": "kerman@usc.edu",
+        "date": "2026-03-13",
+        "title": "\"Role of cPLA2 in neurovascular inflammation in Alzheimer\u2019s disease\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-24",
+        "name": "Michael S. Rafii",
+        "email": "mrafii@usc.edu",
+        "date": "2026-03-20",
+        "title": "\"Alzheimer\u2019s Disease and Down Syndrome: From Insight to Intervention\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-25",
+        "name": "Rivera-Mindt",
+        "email": "riveramindtlab@fordham.edu",
+        "date": "2026-03-27",
+        "title": "\"Utilizing a Community-Engaged Research Approach to Advance Precision Medicine in Alzheimer\u2019s and Related Dementias\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-26",
+        "name": "Karolina M Lempert",
+        "email": "kmlempert@adelphi.edu",
+        "date": "2026-04-03",
+        "title": "\"Memory-guided decision making in aging\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-27",
+        "name": "Ornit Chiba-Falek, Ph.D.",
+        "email": "o.chibafalek@duke.edu",
+        "date": "2026-04-10",
+        "title": "\"Translating single-cell multi-omics discoveries into drug discovery pipeline for Alzheimer's Disease\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-28",
+        "name": "Michal Schnaider Beeri",
+        "email": "mbeeri@ifh.rutgers.edu",
+        "date": "2026-04-17",
+        "title": "\"The role of metabolic dysfunction in brain aging and cognition: from bed to bench to bed\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-29",
+        "name": "Liang Ma",
+        "email": "mal1@uthscsa.edu",
+        "date": "2026-04-24",
+        "title": "\"From Human Genetics to Brain Function: Defining Mechanisms in Polygenic Brain Disorders\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-30",
+        "name": "Voskuhl, Rhonda R.",
+        "email": "RVoskuhl@mednet.ucla.edu",
+        "date": "2026-05-01",
+        "title": "\"Repurposing Estrogen Receptor Specific Targeting from Multiple Sclerosis to Alzheimer\u2019s Disease\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-31",
+        "name": "Heather L Kosakowski",
+        "email": "heather.kosakowski@usc.edu",
+        "date": "2026-05-08",
+        "title": "\"Investigating Human Infant Perception & Knowledge with fMRI\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-32",
+        "name": "Johnson, Lance A.",
+        "email": "Johnson.Lance@uky.edu",
+        "date": "2026-05-15",
+        "title": "\"Flipping the switch on APOE: \u00a0AD-relevant effects of E4 replacement with E2\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-33",
+        "name": "Katharina Kircanski",
+        "email": "katharina.kircanski@usc.edu",
+        "date": "2026-05-22",
+        "title": "\"The Clinical Neuroscience of Irritability\"",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-34",
+        "name": "Jack Chapel",
+        "email": "chapel@usc.edu",
+        "date": "2026-06-05",
+        "title": "\u201cThe social value of preclinical treatment for Alzheimer\u2019s disease\u201d",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-35",
+        "name": "Michael Harrington",
+        "email": "michael.harrington@med.usc.edu",
+        "date": "2026-06-12",
+        "title": "TBD",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-36",
+        "name": "Diaz-Santos, Mirella",
+        "email": "MDiazSantos@mednet.ucla.edu",
+        "date": "2026-06-19",
+        "title": "TBD",
+        "talkType": ""
+      },
+      {
+        "id": "2025-2026-37",
+        "name": "Puga, Frank",
+        "email": "fpuga@uab.edu",
+        "date": "2026-06-26",
+        "title": "TBD",
+        "talkType": ""
+      }
+    ]
+  },
+  "2024-2025": {
+    "label": "ADRC REC 2024-2025",
+    "entries": [
+      {
+        "id": "2024-2025-1",
+        "name": "Dr. April Shu",
+        "email": "",
+        "date": "2024-09-13",
+        "title": "Characterizing Autism Risk Gene Functions Through Single- Cell CRISPR Screening in Brain Organoids",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-2",
+        "name": "Dr. Robin Jia",
+        "email": "",
+        "date": "2024-09-20",
+        "title": "An Academic's Guide to Safely Using AI Language Models",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-3",
+        "name": "Dr. Zhanghua Chen",
+        "email": "",
+        "date": "2024-09-27",
+        "title": "Effects of Air Pollution on Cardiometabolic Health and Aging in Older Population",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-4",
+        "name": "Dr. Owen Carmichael",
+        "email": "",
+        "date": "2024-10-04",
+        "title": "Lifespan Cardiometabolic Risks and Midlife Brain Health",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-5",
+        "name": "Dr. Dobrin Nedelkov",
+        "email": "",
+        "date": "2024-10-11",
+        "title": "ApoE glycosylation and its implications in Alzheimer's disease",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-6",
+        "name": "Dr. Lu Wang",
+        "email": "",
+        "date": "2024-10-18",
+        "title": "Using stem cell-based organoids model to understand neurological disorders",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-7",
+        "name": "Dr. Duke Han",
+        "email": "",
+        "date": "2024-10-25",
+        "title": "Insights About the Editorial Process from an Editor-In-Chief",
+        "talkType": "Career Development"
+      },
+      {
+        "id": "2024-2025-8",
+        "name": "Dr. Helena Chui",
+        "email": "",
+        "date": "2024-11-01",
+        "title": "LATE: Limbic-predominant Age-related TDP-43 Encephalopathy & Hippocampal Sclerosis of Aging A Common Alzheimer Mimic",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-9",
+        "name": "Dr. Hua Chai",
+        "email": "",
+        "date": "2024-11-08",
+        "title": "Unveiling astrocyte functions in health and disease",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-10",
+        "name": "Dr. Robert Rissman",
+        "email": "",
+        "date": "2024-11-15",
+        "title": "Using Plasma Biomarkers as Screening tools in Alzheimer\u2019s Disease Clinical Trials",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-11",
+        "name": "Dr. Jason Hinman",
+        "email": "",
+        "date": "2024-11-22",
+        "title": "Defining the vascular contributions to dementia using blood biomarkers",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-12",
+        "name": "Dr. Soo Borson",
+        "email": "",
+        "date": "2024-12-06",
+        "title": "The Population as Patient: Developing a National Public Health Strategy for Dementia",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-13",
+        "name": "Dr. Georgina Gyarmati",
+        "email": "",
+        "date": "2024-12-13",
+        "title": "The discovery and function of neuroendothelial cells in the brain, retina, and kidney vasculature",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-14",
+        "name": "",
+        "email": "",
+        "date": "2024-12-27",
+        "title": "OFF",
+        "talkType": ""
+      },
+      {
+        "id": "2024-2025-15",
+        "name": "",
+        "email": "",
+        "date": "2025-01-03",
+        "title": "OFF",
+        "talkType": ""
+      },
+      {
+        "id": "2024-2025-16",
+        "name": "",
+        "email": "",
+        "date": "2025-01-10",
+        "title": "OFF",
+        "talkType": ""
+      },
+      {
+        "id": "2024-2025-17",
+        "name": "Dr. Maria Marquine",
+        "email": "",
+        "date": "2025-01-17",
+        "title": "Identifying Neurocognitive Disparities in Aging among Hispanics/Latinos in the US",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-18",
+        "name": "Dr. Astrid Suchy-Dicey",
+        "email": "",
+        "date": "2025-01-24",
+        "title": "Cognitive aging and dementia in American Indians: Data from the Strong Heart Study",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-19",
+        "name": "Dr. Xin Cheng",
+        "email": "",
+        "date": "2025-01-31",
+        "title": "Cerebral Amyloid Angiopathy: What we know and what we don't know",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-20",
+        "name": "Dr. Young-Kwon Hong",
+        "email": "",
+        "date": "2025-02-07",
+        "title": "Impact of the brain lymphatic vessels to neurodegenerative diseases",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-21",
+        "name": "Dr. Gloria Patricia Cardona-G\u00f3mez",
+        "email": "",
+        "date": "2025-02-14",
+        "title": "Time and lipid metabolism in the understanding of Alzheimer's disease",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-22",
+        "name": "Dr. Anastasiia Sadybekov",
+        "email": "",
+        "date": "2025-02-21",
+        "title": "Effective Exploration of Giga- to Tera- Scale Chemical Spaces for Early Drug Discovery",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-23",
+        "name": "Dr. Jennifer Ailshire",
+        "email": "",
+        "date": "2025-02-28",
+        "title": "The Link between Environmental Exposures and Cognitive Function and Dementia",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-24",
+        "name": "",
+        "email": "",
+        "date": "2025-03-07",
+        "title": "OFF",
+        "talkType": ""
+      },
+      {
+        "id": "2024-2025-25",
+        "name": "Dr. Ganesh Babulal",
+        "email": "",
+        "date": "2025-03-14",
+        "title": "Navigating a complex highway: Aging, dementia, and a ghost in the machine",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-26",
+        "name": "Dr. Laura Germine",
+        "email": "",
+        "date": "2025-03-21",
+        "title": "Approaches for the scalable and dynamic measurement of human cognition",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-27",
+        "name": "Dr. Tracy Bastain",
+        "email": "",
+        "date": "2025-03-28",
+        "title": "Investigation of pregnancy as a susceptible window of exposure to environmental toxicants for long-term maternal health outcomes.",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-28",
+        "name": "Dr. Daniel Nation",
+        "email": "",
+        "date": "2025-04-04",
+        "title": "Cerebral microvascular dysfunction in aging and cognitive decline",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-29",
+        "name": "Dr. Kacie Deters",
+        "email": "",
+        "date": "2025-04-11",
+        "title": "Aging and dementia risk factors in Black communities",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-30",
+        "name": "Dr. Arie Kapteyn",
+        "email": "",
+        "date": "2025-04-18",
+        "title": "Cognition work at the Center for Economic and Social Research (CESR)",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-31",
+        "name": "Dr. Changhan David Lee",
+        "email": "",
+        "date": "2025-04-25",
+        "title": "Mitochondrial-Encoded Microproteins, Aging, and AD",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-32",
+        "name": "Dr James Deardorff",
+        "email": "",
+        "date": "2025-05-02",
+        "title": "Incorporating prognosis in the care of older adults with dementia",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-33",
+        "name": "Dr. Ararat Chakhoyan",
+        "email": "",
+        "date": "2025-05-09",
+        "title": "Neuroimaging",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2024-2025-34",
+        "name": "Dr. Rachel Litke",
+        "email": "",
+        "date": "2025-05-16",
+        "title": "Identifying potential new AD therapeutics by investigating the efficacy of already approved drugs in a lab model and through Medicare claims",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-35",
+        "name": "Dr. Maria Casanova",
+        "email": "",
+        "date": "2025-05-23",
+        "title": "",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-36",
+        "name": "Dr. Lolita Nidadavolu",
+        "email": "",
+        "date": "2025-05-30",
+        "title": "",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-37",
+        "name": "Dr. Miguel Arce Renter\u00eda",
+        "email": "",
+        "date": "2025-06-06",
+        "title": "The role of bilingualism and cognition cross-nationally",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-38",
+        "name": "Dr. Rachel Skains",
+        "email": "",
+        "date": "2025-06-13",
+        "title": "Delirium and Dementia in the Geriatric Emergency Department",
+        "talkType": "External Speaker"
+      },
+      {
+        "id": "2024-2025-39",
+        "name": "Dr. Liang Ma",
+        "email": "",
+        "date": "2025-06-20",
+        "title": "Functional genomics to understand APOE common variants and mRNA transcripts in Alzheimer\u2019s disease",
+        "talkType": "External Speaker"
+      }
+    ]
+  },
+  "2023-2024": {
+    "label": "ADRC REC 2023-2024",
+    "entries": [
+      {
+        "id": "2023-2024-1",
+        "name": "Dr. Joshua Hooks",
+        "email": "",
+        "date": "2023-09-15",
+        "title": "From Lab to Market: How NIA supports translational aging research and bio-entrepreneurial efforts",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-2",
+        "name": "Dr. Adit Friedberg",
+        "email": "",
+        "date": "2023-09-22",
+        "title": "De novo visual creativity in frontotemporal dementia \u2013 A story about large-scale brain network rebalance",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-3",
+        "name": "Dr. John Ringman & Dr. Ashim Ahuja",
+        "email": "",
+        "date": "2023-09-29",
+        "title": "Two Atypical Cases",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2023-2024-4",
+        "name": "Dr Constanza Cortes",
+        "email": "",
+        "date": "2023-10-06",
+        "title": "Neuroprotection on the Treadmill: Exercise, Brain Aging and Alzheimer\u2019s Disease",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-5",
+        "name": "Dr. Hussein Yassine",
+        "email": "",
+        "date": "2023-10-13",
+        "title": "Developing a successful career in ADRD research: it takes a village",
+        "talkType": "Career Development"
+      },
+      {
+        "id": "2023-2024-6",
+        "name": "Dr. B\u00e9r\u00e9nice Benayoun",
+        "email": "",
+        "date": "2023-10-20",
+        "title": "Sex-dimorphism in macrophage aging: are we missing half of the picture?",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-7",
+        "name": "Dr. Frances Chow",
+        "email": "",
+        "date": "2023-10-27",
+        "title": "Memantine for the Prevention of Cognitive Dysfunction in Whole Brain Radiation",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-8",
+        "name": "Dr. Agenor Limon",
+        "email": "",
+        "date": "2023-11-03",
+        "title": "Synaptic bases of Cognitive Impairment in the continuum of Alzheimer's disease-type dementia",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-9",
+        "name": "Dr. Bilal Kerman",
+        "email": "",
+        "date": "2023-11-10",
+        "title": "Exploring Novel Mechanisms of APOE4 in Alzheimer's Disease Using Stem Cells",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-10",
+        "name": "Dr. Katherine Wong",
+        "email": "",
+        "date": "2023-11-17",
+        "title": "Patient Case Presentation",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2023-2024-11",
+        "name": "Dr. Nasim Sheikh-Bahaei",
+        "email": "",
+        "date": "2023-12-01",
+        "title": "Microhemorrhages, Amyloid Angiopathy and Amyloid-Related Imaging Abnormality (ARIA)",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-12",
+        "name": "Dr. Ioannis Pappas",
+        "email": "",
+        "date": "2023-12-08",
+        "title": "Neurovascular contributions to dementia and aging: a neuroimaging perspective",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-13",
+        "name": "Dr. Xianghong Arakaki",
+        "email": "",
+        "date": "2023-12-15",
+        "title": "Cognitive challenge reveals systemic changes in cognitively healthy individuals with pathological CSF amyloid/tau ratio (CH-PATs)",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-14",
+        "name": "Dr. David Bates",
+        "email": "",
+        "date": "2023-12-19",
+        "title": "Linus Health",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-15",
+        "name": "Dr. Elizabeth Joe",
+        "email": "",
+        "date": "2024-01-05",
+        "title": "Patient Case Presentation",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2023-2024-16",
+        "name": "Dr. Arousiak Varpetian",
+        "email": "",
+        "date": "2024-01-12",
+        "title": "Patient Case Presentation",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-17",
+        "name": "Dr. Julia TCW",
+        "email": "",
+        "date": "2024-01-19",
+        "title": "Deciphering functional mechanism of Alzheimer\u2019s disease genetic risk using human iPSC and brain models",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-18",
+        "name": "Dr. Barbara Turner",
+        "email": "",
+        "date": "2024-01-26",
+        "title": "Writing a Scientific Paper \u2013 Go for It",
+        "talkType": "Career Development"
+      },
+      {
+        "id": "2023-2024-19",
+        "name": "Dr. Sidra Haye",
+        "email": "",
+        "date": "2024-02-02",
+        "title": "Differences in Dementia Diagnosis Rates in Traditional Medicare and Medicare Advantage.",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-20",
+        "name": "Dr. Johanna Thunell",
+        "email": "",
+        "date": "2024-02-09",
+        "title": "Using Observational Study for Dementia Research in Diverse Populations",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-21",
+        "name": "Dr. Sam Henderson",
+        "email": "",
+        "date": "2024-02-16",
+        "title": "Ketogenic Treatments for Alzheimer\u2019s disease \u2013 Rationale and Results",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-22",
+        "name": "Dr. Xingfeng Shao",
+        "email": "",
+        "date": "2024-02-23",
+        "title": "A non-invasive MRI technique for measuring blood-brain barrier function: using water as an endogenous tracer",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-23",
+        "name": "Dr Elizabeth Joe",
+        "email": "",
+        "date": "2024-03-01",
+        "title": "Using EHR data to understand real world dementia diagnosis and care",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-24",
+        "name": "Dr. Isaac Asante",
+        "email": "",
+        "date": "2024-03-08",
+        "title": "Developing Novel cPLA2 Inhibitors for the Treatment of Alzheimer\u2019s Disease",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-25",
+        "name": "Dr. Miranda Lim",
+        "email": "",
+        "date": "2024-03-15",
+        "title": "Defining and Measuring Sleep-Active Glymphatic Function in Rodent and Human Brain",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-26",
+        "name": "Dr. Alfred Fonteh",
+        "email": "",
+        "date": "2024-03-22",
+        "title": "Lipid Therapeutic Targets and Biomarkers of Presymptomatic Alzheimer\u2019s Disease",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-27",
+        "name": "Dr. Sid O'Bryant",
+        "email": "",
+        "date": "2024-03-29",
+        "title": "Examining Biomarkers of Alzheimer\u2019s Disease Among Diverse Communities \u2013 Challenging Current Conceptualizations",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-28",
+        "name": "Dr. Neda Jahanshad",
+        "email": "",
+        "date": "2024-04-12",
+        "title": "Large-scale neuroimaging for understanding brain aging and risk for dementia.",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-29",
+        "name": "Dr. Jessica Rexach",
+        "email": "",
+        "date": "2024-04-26",
+        "title": "Comparative Single Cell Genomic Analysis of Three Sporadic Human Dementias Reveals Disease-specific Neuroimmune and Neuroglial States and Gene Regulatory Networks",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-30",
+        "name": "Dr. Mark Gluck",
+        "email": "",
+        "date": "2024-05-03",
+        "title": "Pathways to Healthy Aging: How Lifestyle, Genetics, and Environment Interact to Promote Resilience Against Alzheimer's Disease in Older African Americans",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-31",
+        "name": "Dr. Junhao Wen",
+        "email": "",
+        "date": "2024-05-10",
+        "title": "AI/ML in precision medicine: Reproducibility, disease heterogeneity, and beyond the brain",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-32",
+        "name": "Dr. S. Ahmad Sajjadi",
+        "email": "",
+        "date": "2024-05-31",
+        "title": "The RD in ADRD; studies of pathological underpinnings of dementia in the oldest old",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2023-2024-33",
+        "name": "Dr. Yi Zhu",
+        "email": "",
+        "date": "2024-06-07",
+        "title": "Cellular Senescence and Senolytics in Aging and Diseases",
+        "talkType": "Invited Speaker"
+      }
+    ]
+  },
+  "2022-2023": {
+    "label": "ADRC REC 2022-2023",
+    "entries": [
+      {
+        "id": "2022-2023-1",
+        "name": "Dr. Vasilis Marmarelis",
+        "email": "",
+        "date": "2022-09-09",
+        "title": "Can dysregulation of cerebral perfusion be pivotal in initiating the vicious cycle towards neural degeneration and dementia ?",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-2",
+        "name": "Dr. Hongmei Li",
+        "email": "",
+        "date": "2022-09-16",
+        "title": "Prepare and publish in high-impact journals - an editor's point of view",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-3",
+        "name": "Dr. Debra Hawes and Dr. Arousiak Varpetian",
+        "email": "",
+        "date": "2022-09-23",
+        "title": "Clinical and Pathology Findings of 2 Patients with Uncommon Dementia",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2022-2023-4",
+        "name": "Dr. Michael Harrington and Lorena Contreras",
+        "email": "",
+        "date": "2022-09-30",
+        "title": "Diabetes Brain (VCS-GT) Diagnostic Conference",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2022-2023-5",
+        "name": "Dr. Sofiia Henyk",
+        "email": "",
+        "date": "2022-10-07",
+        "title": "Phenotypic parallels between Parkinson's disease and Alzheimer's disease. Ukrainian experience.",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-6",
+        "name": "Dr Helena Chui",
+        "email": "",
+        "date": "2022-10-14",
+        "title": "USC NIA-funded Alzheimer Disease Research Center(s): An Overview",
+        "talkType": "Career Development"
+      },
+      {
+        "id": "2022-2023-7",
+        "name": "Dr. Hussein Yassine",
+        "email": "",
+        "date": "2022-10-21",
+        "title": "Career Development Tips for Junior Investigators",
+        "talkType": "Career Development"
+      },
+      {
+        "id": "2022-2023-8",
+        "name": "Dr. Michael Harrington and Lorena Contreras",
+        "email": "",
+        "date": "2022-10-28",
+        "title": "Diabetes Brain (VCS-GT) Diagnostic Conference",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2022-2023-9",
+        "name": "Dr. Meredith Braskie",
+        "email": "",
+        "date": "2022-11-04",
+        "title": "Metabolic and Vascular Risk for Alzheimer's Disease",
+        "talkType": "Career Development"
+      },
+      {
+        "id": "2022-2023-10",
+        "name": "Dr. Alexander Kulminski",
+        "email": "",
+        "date": "2022-11-11",
+        "title": "The role of the APOE gene cluster variants in Alzheimer\u2019s disease and related traits",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-11",
+        "name": "Dr. Elizabeth Joe, Dr. Arousiak Varpetian, Dr. John Ringman",
+        "email": "",
+        "date": "2022-11-18",
+        "title": "Patient Case Presentations",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2022-2023-12",
+        "name": "Dr. Zhen Zhao",
+        "email": "",
+        "date": "2022-12-02",
+        "title": "A cerebrovascular link between traumatic brain injury and dementia",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-13",
+        "name": "NIA",
+        "email": "",
+        "date": "2022-12-09",
+        "title": "Building a career in ADRD research (10AM Not 1, Webinar hosted Alzheimers Association)",
+        "talkType": "National Webinar"
+      },
+      {
+        "id": "2022-2023-14",
+        "name": "Dr. John Ringman",
+        "email": "",
+        "date": "2022-12-16",
+        "title": "Writing Grant Applications for Observational Studies in Alzheimer's Disease",
+        "talkType": "Career Development"
+      },
+      {
+        "id": "2022-2023-15",
+        "name": "Dr. John Ringman",
+        "email": "",
+        "date": "2023-01-06",
+        "title": "Journal Club on \u201cAlzheimer\u2019s disease-like neuropathology in three species of oceanic dolphin\u201d",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-16",
+        "name": "Dr. Andrei Irimia",
+        "email": "",
+        "date": "2023-01-13",
+        "title": "Deep learning of brain age reveals Alzheimer\u2019s disease-related anatomic patterns of neurodegeneration",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-17",
+        "name": "Dr. Lon Schneider",
+        "email": "",
+        "date": "2023-01-20",
+        "title": "Lecanemab: Why It Takes a Village to Prescribe It and Why the Village Is Redlined",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-18",
+        "name": "Dr. Elizabeth Joe",
+        "email": "",
+        "date": "2023-01-27",
+        "title": "Patient Case Presentation",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2022-2023-19",
+        "name": "Dr. Pinchas Cohen",
+        "email": "",
+        "date": "2023-02-03",
+        "title": "Mitochondrial Microproteins: Novel Therapeutic Targets for Alzheimer\u2019s Disease",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-20",
+        "name": "Dr. Zoe Arvanitakis",
+        "email": "",
+        "date": "2023-02-10",
+        "title": "The complex relationship of metabolic dysfunction to cognitive impairment in aging",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-21",
+        "name": "Dr. Danny Wang",
+        "email": "",
+        "date": "2023-02-17",
+        "title": "Imaging Morphology and Function of Cerebral Small Vessels at 3 and 7T",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-22",
+        "name": "Dr. David Raichlen",
+        "email": "",
+        "date": "2023-02-24",
+        "title": "An evolutionary perspective on physical activity and brain health",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-23",
+        "name": "Dr. Rema Raman",
+        "email": "",
+        "date": "2023-03-03",
+        "title": "Promoting AD/ADRD clinical trials research through effective collaborations",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-24",
+        "name": "Dr. Elizabeth Joe",
+        "email": "",
+        "date": "2023-03-10",
+        "title": "Dementia care in a safety net health system",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-25",
+        "name": "Dr. Katherine Wong",
+        "email": "",
+        "date": "2023-03-17",
+        "title": "Patient Case Presentation",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2022-2023-26",
+        "name": "Dr. John Ringman",
+        "email": "",
+        "date": "2023-03-24",
+        "title": "Case Presentations from the ADRC, including one raising questions about the amyloid hypothesis",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2022-2023-27",
+        "name": "Dr. Valter Longo",
+        "email": "",
+        "date": "2023-03-31",
+        "title": "Fasting Mimicking Diet Cycles in Aging and Alzheimer\u2019s Disease",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-28",
+        "name": "Dr. Andrew Leuchter",
+        "email": "",
+        "date": "2023-04-07",
+        "title": "Network-targeted theta-burst stimulation for episodic memory improvement in mild cognitive impairment",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-29",
+        "name": "Dr. Jerome Mertens",
+        "email": "",
+        "date": "2023-04-14",
+        "title": "Neuronal Fate Loss and Metabolic Transformation in Age-Equivalent Alzheimer Patient Neurons",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-30",
+        "name": "Dr. Sarah Tomaszewski Farias",
+        "email": "",
+        "date": "2023-04-21",
+        "title": "Everyday Cognition Scales (ECog): Rationale and psychometric properties",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-31",
+        "name": "Dr. Michael Bienkowski",
+        "email": "",
+        "date": "2023-05-05",
+        "title": "Machine learning quantification and classification of Alzheimer's disease pathology in human hippocampal subregions.",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-32",
+        "name": "Dr. Harrington and Contreras",
+        "email": "",
+        "date": "2023-05-12",
+        "title": "Diabetes Brain (VCS-GT) Diagnostic Conference",
+        "talkType": "Case Conference"
+      },
+      {
+        "id": "2022-2023-33",
+        "name": "Dr. Peter Vanderklish",
+        "email": "",
+        "date": "2023-05-19",
+        "title": "Amydis\u2019 retinal tracers for the detection of biomarkers of neurodegenerative diseases",
+        "talkType": "Invited Speaker"
+      },
+      {
+        "id": "2022-2023-34",
+        "name": "Dr. Suzee Lee",
+        "email": "",
+        "date": "2023-05-26",
+        "title": "Early life structural and functional network connectivity abnormalities in genetic frontotemporal dementia",
+        "talkType": "Invited Speaker"
+      }
+    ]
+  },
+  "2021-2022": {
+    "label": "ADRC REC 2021-2022",
+    "entries": [
+      {
+        "id": "2021-2022-1",
+        "name": "Helena Chui",
+        "email": "",
+        "date": "2021-10-15",
+        "title": "Introduction, Overview, and Access to ADRC resources",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-2",
+        "name": "Hussein Yassine",
+        "email": "",
+        "date": "2021-10-29",
+        "title": "Career development in AD",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-3",
+        "name": "Ebi Zandi",
+        "email": "",
+        "date": "2021-11-12",
+        "title": "Plasma AD biomarkers",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-4",
+        "name": "Elena Portacolone (Guest, UCSF)",
+        "email": "",
+        "date": "2021-12-03",
+        "title": "ADRD research in underserved populations: opportunities and lessons",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-5",
+        "name": "Arthur Toga",
+        "email": "",
+        "date": "2021-12-17",
+        "title": "LONI Resources: GAAIN",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-6",
+        "name": "Xinhui Wang",
+        "email": "",
+        "date": "2022-01-14",
+        "title": "Grant application: biostatistics considerations",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-7",
+        "name": "Roksana Karim",
+        "email": "",
+        "date": "2022-01-28",
+        "title": "Estradiol Therapy, Plasma Biomarkers of Alzheimer\u2019s Disease and Cognitive Decline in Healthy Postmenopausal Women",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-8",
+        "name": "Russell Jacobs",
+        "email": "",
+        "date": "2022-02-04",
+        "title": "In vivo animal imaging: tools and resources",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-9",
+        "name": "Leon Aksman",
+        "email": "",
+        "date": "2022-02-11",
+        "title": "Uncovering the disease progression timelines of Alzheimer\u2019s disease subtypes",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-10",
+        "name": "Arous Varpetian, M.D., et al",
+        "email": "",
+        "date": "2022-02-18",
+        "title": "An uncommon cause of frontotemporal lobar degeneration:  A CPC",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-11",
+        "name": "Isaac Asante",
+        "email": "",
+        "date": "2022-03-04",
+        "title": "Effect of cPLA2 Inhibition on Inflammatory Mediators in ApoE4 Mice",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-12",
+        "name": "Kevin Bickhart, M.D.",
+        "email": "",
+        "date": "2022-03-11",
+        "title": "Brain networks and behaviors affected in TBI across the spectrum of injury age, mechanism, and severity",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-13",
+        "name": "Berislav Zlokovic/ Might move to April 22",
+        "email": "",
+        "date": "2022-03-25",
+        "title": "Building a research career in AD",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-14",
+        "name": "Dr. Margy Gatz (Invitation by Dr. Ringman)",
+        "email": "",
+        "date": "2022-04-01",
+        "title": "Prevalence of dementia and mild cognitive impairment in indigenous Bolivian Tsimane and Moseten: What have we learned",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-15",
+        "name": "Hussein Yassine",
+        "email": "",
+        "date": "2022-04-08",
+        "title": "Course wrap up, student questions/proposal reviews",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-16",
+        "name": "Brooke Erika Hjelm",
+        "email": "",
+        "date": "2022-04-15",
+        "title": "Mitochondrial DNA Deletions in Cerebrospinal Fluid as a Biomarker of Cognitive Decline Etiology",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-17",
+        "name": "Dr. Karen Lincoln",
+        "email": "",
+        "date": "2022-04-22",
+        "title": "Brain clearance system alteration and cognitive decline in African Americans with poor sleep quality.",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-18",
+        "name": "Duke Han, Ph.D.",
+        "email": "",
+        "date": "2022-04-29",
+        "title": "Financial decision making in older age and relevance to Alzheimer\u2019s Disease",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-19",
+        "name": "Lindsey Schier",
+        "email": "",
+        "date": "2022-05-06",
+        "title": "Emergence of taste dysfunction in a rodent model of Alzheimer\u2019s Disease",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-20",
+        "name": "Paul Seidler",
+        "email": "",
+        "date": "2022-05-20",
+        "title": "Breaking barriers to solve neurodegeneration",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-21",
+        "name": "Amy Christensen",
+        "email": "",
+        "date": "2022-05-27",
+        "title": "Beta-hydroxybutarate supplementation as a prevention for AD neuropathology in APOE AD mice Translat",
+        "talkType": ""
+      },
+      {
+        "id": "2021-2022-22",
+        "name": "Andrei Irimaia (Irimia)",
+        "email": "",
+        "date": "2022-06-03",
+        "title": "Automated analysis of cerebral microbleeds for candidates and recipients of monoclonal anti- amyloid therapies for Alzheimer\u2019s disease",
+        "talkType": ""
+      }
+    ]
+  },
+  "_meta": {
+    "lastUpdated": "2026-08-24T13:54:00-07:00"
+  }
+}
