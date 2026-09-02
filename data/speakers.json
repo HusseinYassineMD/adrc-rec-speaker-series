@@ -1344,7 +1344,342 @@
       }
     ]
   },
+  "2026-2027": {
+    "label": "ADRC REC 2026-2027",
+    "entries": [
+      {
+        "id": "2026-2027-1",
+        "name": "Hussein Yassine",
+        "email": "hyassine@usc.edu",
+        "date": "2026-09-11",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-2",
+        "name": "Bryan James",
+        "email": "Bryan_James@rush.edu",
+        "date": "2026-09-18",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-3",
+        "name": "John Ringman",
+        "email": "John.Ringman@med.usc.edu",
+        "date": "2026-09-25",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-4",
+        "name": "Daniel Nation",
+        "email": "danation@usc.edu",
+        "date": "2026-10-02",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-5",
+        "name": "Francesca B Falzarano",
+        "email": "falzaran@usc.edu",
+        "date": "2026-10-09",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-6",
+        "name": "Iris Broce-Diaz",
+        "email": "ibroce@health.ucsd.edu",
+        "date": "2026-10-16",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-7",
+        "name": "Kacie Deters",
+        "email": "kdeters@g.ucla.edu",
+        "date": "2026-10-23",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-8",
+        "name": "Hwamee Oh",
+        "email": "hwamee_oh@brown.edu",
+        "date": "2026-10-30",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-9",
+        "name": "Juliana Uribe",
+        "email": "acostauribe@ucsb.edu",
+        "date": "2026-11-06",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-10",
+        "name": "Marc Vermulst",
+        "email": "vermulst@usc.edu",
+        "date": "2026-11-13",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-11",
+        "name": "Byungsoo Kong",
+        "email": "kongb@usc.edu",
+        "date": "2026-11-20",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-12",
+        "name": "Jessica Langbaum",
+        "email": "Jessica.Langbaum@bannerhealth.com",
+        "date": "2026-12-04",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-13",
+        "name": "Kate Wilber",
+        "email": "wilber@usc.edu",
+        "date": "2026-12-11",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-14",
+        "name": "Xinhui Wang",
+        "email": "xinhuiwa@usc.edu",
+        "date": "2026-12-18",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Fall 2026"
+      },
+      {
+        "id": "2026-2027-15",
+        "name": "Stefan Schneider",
+        "email": "schneids@usc.edu",
+        "date": "2027-01-08",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-16",
+        "name": "Anne Hiniker",
+        "email": "Anne.Hiniker@med.usc.edu",
+        "date": "2027-01-15",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-17",
+        "name": "Yokoma Jennifer",
+        "email": "Jennifer.Yokoyama@ucsf.edu",
+        "date": "2027-01-22",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-18",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-01-29",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-19",
+        "name": "Michelle Keller",
+        "email": "mkeller5@usc.edu",
+        "date": "2027-02-05",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-20",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-02-12",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-21",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-02-19",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-22",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-02-26",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-23",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-03-05",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-24",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-03-12",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-25",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-03-19",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-26",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-03-26",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-27",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-04-02",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-28",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-04-09",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-29",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-04-16",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-30",
+        "name": "Teal Eich",
+        "email": "teich@usc.edu",
+        "date": "2027-04-23",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Booked",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-31",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-04-30",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-32",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-05-07",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      },
+      {
+        "id": "2026-2027-33",
+        "name": "Open slot",
+        "email": "",
+        "date": "2027-05-14",
+        "title": "Topic TBD",
+        "talkType": "",
+        "status": "Open",
+        "semester": "Spring 2027"
+      }
+    ]
+  },
   "_meta": {
-    "lastUpdated": "2026-08-24T13:54:00-07:00"
+    "lastUpdated": "2026-09-02T11:48:29-07:00"
   }
 }

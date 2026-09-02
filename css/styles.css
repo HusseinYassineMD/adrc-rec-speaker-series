@@ -425,7 +425,14 @@ body {
 .type-badge.career { background: #dcfce7; color: #166534; }
 .type-badge.case { background: #f3e8ff; color: #6b21a8; }
 .type-badge.blocked { background: #f5f5f4; color: var(--blocked); }
-.type-badge.past { background: #e4e4e7; color: #52525b; }
+.type-badge.open { background: #fef9c3; color: #854d0e; }
+
+.schedule-table tbody tr.row-open {
+  background: #fefce8;
+}
+
+.schedule-table tbody tr.row-open:hover { background: #fef9c3; }
+
 .type-badge.scheduled { background: #dbeafe; color: #1e40af; }
 
 .actions-col { width: 90px; text-align: center; }

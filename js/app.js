@@ -5,7 +5,7 @@
 
 const STORAGE_KEY = 'adrc-rec-speaker-series';
 const META_KEY = 'adrc-rec-meta';
-const DEFAULT_YEAR = '2025-2026';
+const DEFAULT_YEAR = '2026-2027';
 
 let data = {};
 let meta = { lastUpdated: null };
@@ -189,15 +189,19 @@ function getSpeakerEntries(year) {
 }
 
 function getUpcomingSpeakers(year) {
-  return getSpeakerEntries(year).filter(e => isUpcoming(e.date));
+  return getSpeakerEntries(year).filter(e => isUpcoming(e.date) && e.status !== 'Open');
+}
+
+function getOpenSlots(year) {
+  return getSpeakerEntries(year).filter(e => e.status === 'Open' && isUpcoming(e.date));
 }
 
 function getPastSpeakers(year) {
-  return getSpeakerEntries(year).filter(e => isPast(e.date));
+  return getSpeakerEntries(year).filter(e => isPast(e.date) && e.status !== 'Open');
 }
 
 function isArchiveYear(year) {
-  return getUpcomingSpeakers(year).length === 0 && getPastSpeakers(year).length > 0;
+  return getUpcomingSpeakers(year).length === 0 && getOpenSlots(year).length === 0 && getPastSpeakers(year).length > 0;
 }
 
 function escapeHtml(str) {
@@ -270,14 +274,18 @@ function renderLastUpdated() {
 
 function renderStats() {
   const upcoming = getUpcomingSpeakers(currentYear);
+  const openSlots = getOpenSlots(currentYear);
   const past = getPastSpeakers(currentYear);
   const total = getSpeakerEntries(currentYear);
-  const types = new Set(upcoming.map(e => e.talkType).filter(Boolean));
 
   document.getElementById('stats-bar').innerHTML = `
     <div class="stat-card highlight">
       <div class="stat-value">${upcoming.length}</div>
-      <div class="stat-label">Scheduled (upcoming)</div>
+      <div class="stat-label">Booked (upcoming)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">${openSlots.length}</div>
+      <div class="stat-label">Open slots</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">${past.length}</div>
@@ -285,11 +293,7 @@ function renderStats() {
     </div>
     <div class="stat-card">
       <div class="stat-value">${total.length}</div>
-      <div class="stat-label">Total talks</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">${types.size}</div>
-      <div class="stat-label">Upcoming talk types</div>
+      <div class="stat-label">Total entries</div>
     </div>
   `;
 }
@@ -339,31 +343,34 @@ function renderTable() {
   empty.classList.add('hidden');
 
   tbody.innerHTML = entries.map(e => {
-    const upcoming = isUpcoming(e.date);
-    const past = isPast(e.date);
-    const rowClass = upcoming ? 'row-upcoming' : past ? 'row-past' : '';
-    const badgeClass = upcoming ? 'scheduled' : past ? 'past' : getTypeBadgeClass(e.talkType);
+    const isOpen = e.status === 'Open';
+    const upcoming = !isOpen && isUpcoming(e.date);
+    const past = !isOpen && isPast(e.date);
+    const rowClass = isOpen ? 'row-open' : upcoming ? 'row-upcoming' : past ? 'row-past' : '';
+    const statusLabel = e.status || (isOpen ? 'Open' : upcoming ? 'Booked' : past ? 'Past' : 'Booked');
+    const badgeClass = isOpen ? 'open' : upcoming ? 'scheduled' : past ? 'past' : getTypeBadgeClass(e.talkType);
 
     const emailHtml = e.email
       ? `<span class="speaker-email"><a href="mailto:${escapeHtml(e.email)}">${escapeHtml(e.email)}</a></span>`
       : '';
 
-    let typeHtml = e.talkType || '—';
-    if (upcoming) typeHtml = e.talkType ? `${e.talkType}` : 'Scheduled';
-    if (past) typeHtml = e.talkType ? `${e.talkType} · Past` : 'Past';
+    const semesterHtml = e.semester
+      ? `<span class="day-name">${escapeHtml(e.semester)}</span>`
+      : '';
 
     return `
       <tr class="${rowClass}" data-id="${e.id}">
         <td class="date-cell">
           ${formatDate(e.date)}
-          <span class="day-name">${formatDay(e.date)}${upcoming ? ' · Scheduled' : past ? ' · Past' : ''}</span>
+          <span class="day-name">${formatDay(e.date)}${upcoming ? ' · Upcoming' : past ? ' · Past' : isOpen ? ' · Open' : ''}</span>
+          ${semesterHtml}
         </td>
         <td class="speaker-cell">
-          <span class="speaker-name">${escapeHtml(e.name)}</span>
+          <span class="speaker-name">${escapeHtml(e.name || 'Open slot')}</span>
           ${emailHtml}
         </td>
-        <td class="title-cell">${escapeHtml(e.title.replace(/^"|"$/g, ''))}</td>
-        <td><span class="type-badge ${badgeClass}">${escapeHtml(typeHtml)}</span></td>
+        <td class="title-cell">${escapeHtml((e.title || 'Topic TBD').replace(/^"|"$/g, ''))}</td>
+        <td><span class="type-badge ${badgeClass}">${escapeHtml(statusLabel)}</span></td>
         <td class="actions-col">
           <div class="row-actions">
             <button type="button" class="btn-icon btn-edit" title="Edit" data-id="${e.id}">✎</button>
