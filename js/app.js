@@ -204,7 +204,73 @@ function isArchiveYear(year) {
   return getUpcomingSpeakers(year).length === 0 && getOpenSlots(year).length === 0 && getPastSpeakers(year).length > 0;
 }
 
+function inferFromEmail(email) {
+  const domainMap = {
+    'usc.edu': ['USC', 'Internal'],
+    'med.usc.edu': ['USC', 'Internal'],
+    'ucla.edu': ['UCLA', 'External'],
+    'g.ucla.edu': ['UCLA', 'External'],
+    'mednet.ucla.edu': ['UCLA', 'External'],
+    'uci.edu': ['UC Irvine', 'External'],
+    'ucsd.edu': ['UC San Diego', 'External'],
+    'health.ucsd.edu': ['UC San Diego', 'External'],
+    'ucsf.edu': ['UCSF', 'External'],
+    'ucsb.edu': ['UC Santa Barbara', 'External'],
+    'uw.edu': ['University of Washington', 'External'],
+    'mayo.edu': ['Mayo Clinic', 'External'],
+    'wustl.edu': ['Washington University in St. Louis', 'External'],
+    'cumc.columbia.edu': ['Columbia University', 'External'],
+    'wayne.edu': ['Wayne State University', 'External'],
+    'uky.edu': ['University of Kentucky', 'External'],
+    'brown.edu': ['Brown University', 'External'],
+    'rush.edu': ['Rush University', 'External'],
+    'duke.edu': ['Duke University', 'External'],
+    'ucf.edu': ['University of Central Florida', 'External'],
+    'clemson.edu': ['Clemson University', 'External'],
+    'utdallas.edu': ['UT Dallas', 'External'],
+    'bannerhealth.com': ['Banner Health', 'External'],
+  };
+
+  if (!email || !email.includes('@')) return { affiliation: '', speakerType: '' };
+  const domain = email.split('@').pop().toLowerCase();
+  if (domainMap[domain]) {
+    return { affiliation: domainMap[domain][0], speakerType: domainMap[domain][1] };
+  }
+  if (domain === 'usc.edu' || domain.endsWith('.usc.edu')) {
+    return { affiliation: 'USC', speakerType: 'Internal' };
+  }
+  const base = domain.split('.')[0];
+  const affiliation = base.length <= 4 ? base.toUpperCase() : base.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  return { affiliation, speakerType: 'External' };
+}
+
+function enrichEntry(entry) {
+  if (entry.status === 'Open' || entry.name === 'Open slot') {
+    entry.affiliation = entry.affiliation || '';
+    entry.speakerType = entry.speakerType || '';
+    return entry;
+  }
+  if (!entry.affiliation || !entry.speakerType) {
+    const inferred = inferFromEmail(entry.email);
+    entry.affiliation = entry.affiliation || inferred.affiliation;
+    entry.speakerType = entry.speakerType || inferred.speakerType;
+  }
+  return entry;
+}
+
+function enrichAllData() {
+  Object.keys(data).forEach(year => {
+    if (year === '_meta') return;
+    data[year].entries = data[year].entries.map(e => enrichEntry({ ...e }));
+  });
+}
+
 function escapeHtml(str) {
+  const el = document.createElement('span');
+  el.textContent = str;
+  return el.innerHTML;
+}
+
   const el = document.createElement('span');
   el.textContent = str;
   return el.innerHTML;
@@ -275,8 +341,8 @@ function renderLastUpdated() {
 function renderStats() {
   const upcoming = getUpcomingSpeakers(currentYear);
   const openSlots = getOpenSlots(currentYear);
-  const past = getPastSpeakers(currentYear);
-  const total = getSpeakerEntries(currentYear);
+  const internal = upcoming.filter(e => e.speakerType === 'Internal').length;
+  const external = upcoming.filter(e => e.speakerType === 'External').length;
 
   document.getElementById('stats-bar').innerHTML = `
     <div class="stat-card highlight">
@@ -284,16 +350,16 @@ function renderStats() {
       <div class="stat-label">Booked (upcoming)</div>
     </div>
     <div class="stat-card">
+      <div class="stat-value">${internal}</div>
+      <div class="stat-label">USC (internal)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">${external}</div>
+      <div class="stat-label">External</div>
+    </div>
+    <div class="stat-card">
       <div class="stat-value">${openSlots.length}</div>
       <div class="stat-label">Open slots</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">${past.length}</div>
-      <div class="stat-label">Completed (past)</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">${total.length}</div>
-      <div class="stat-label">Total entries</div>
     </div>
   `;
 }
@@ -310,13 +376,15 @@ function renderTypeFilter() {
 function getFilteredEntries() {
   const search = document.getElementById('search-input').value.toLowerCase().trim();
   const typeFilter = document.getElementById('filter-type').value;
+  const speakerTypeFilter = document.getElementById('filter-speaker-type').value;
   const upcomingOnly = document.getElementById('upcoming-only').checked;
 
   return getEntries(currentYear).filter(e => {
     if (typeFilter && e.talkType !== typeFilter) return false;
+    if (speakerTypeFilter && e.speakerType !== speakerTypeFilter) return false;
     if (upcomingOnly && !isUpcoming(e.date)) return false;
     if (search) {
-      const hay = `${e.name} ${e.email} ${e.title} ${e.talkType}`.toLowerCase();
+      const hay = `${e.name} ${e.email} ${e.title} ${e.talkType} ${e.affiliation} ${e.speakerType}`.toLowerCase();
       if (!hay.includes(search)) return false;
     }
     return true;
@@ -358,6 +426,8 @@ function renderTable() {
       ? `<span class="day-name">${escapeHtml(e.semester)}</span>`
       : '';
 
+    const typeBadgeClass = e.speakerType === 'Internal' ? 'internal' : e.speakerType === 'External' ? 'external' : '';
+
     return `
       <tr class="${rowClass}" data-id="${e.id}">
         <td class="date-cell">
@@ -368,6 +438,12 @@ function renderTable() {
         <td class="speaker-cell">
           <span class="speaker-name">${escapeHtml(e.name || 'Open slot')}</span>
           ${emailHtml}
+        </td>
+        <td class="affiliation-cell">
+          <span class="affiliation-name">${escapeHtml(e.affiliation || '—')}</span>
+        </td>
+        <td class="type-cell">
+          ${e.speakerType ? `<span class="type-badge ${typeBadgeClass}">${escapeHtml(e.speakerType)}</span>` : '—'}
         </td>
         <td class="title-cell">${escapeHtml((e.title || 'Topic TBD').replace(/^"|"$/g, ''))}</td>
         <td><span class="type-badge ${badgeClass}">${escapeHtml(statusLabel)}</span></td>
@@ -423,6 +499,8 @@ function populateForm(entry) {
   document.getElementById('entry-email').value = entry.email || '';
   document.getElementById('entry-date').value = parseDate(entry.date) ? entry.date : '';
   document.getElementById('entry-title').value = entry.title || '';
+  document.getElementById('entry-affiliation').value = entry.affiliation || '';
+  document.getElementById('entry-speaker-type').value = entry.speakerType || '';
 
   const presetTypes = ['Invited Speaker', 'External Speaker', 'Career Development', 'Case Conference', 'National Webinar', 'Journal Club'];
   const talkSelect = document.getElementById('entry-talk-type');
@@ -451,13 +529,23 @@ function getFormEntry() {
     ? document.getElementById('entry-talk-type-custom').value.trim()
     : sel;
 
+  let affiliation = document.getElementById('entry-affiliation').value.trim();
+  let speakerType = document.getElementById('entry-speaker-type').value;
+  const email = document.getElementById('entry-email').value.trim();
+  const inferred = inferFromEmail(email);
+  if (!affiliation) affiliation = inferred.affiliation;
+  if (!speakerType) speakerType = inferred.speakerType;
+
   return {
     id,
     name: document.getElementById('entry-name').value.trim(),
-    email: document.getElementById('entry-email').value.trim(),
+    email,
     date: document.getElementById('entry-date').value,
     title: document.getElementById('entry-title').value.trim(),
-    talkType
+    talkType,
+    affiliation,
+    speakerType,
+    status: 'Booked',
   };
 }
 
@@ -482,9 +570,9 @@ function exportJSON() {
 
 function exportCSV() {
   const entries = getEntries(currentYear);
-  const headers = ['Date', 'Name', 'Email', 'Title', 'Talk Type'];
+  const headers = ['Date', 'Name', 'Email', 'Affiliation', 'Speaker Type', 'Title', 'Talk Type', 'Status'];
   const rows = entries.map(e =>
-    [e.date, e.name, e.email, e.title, e.talkType]
+    [e.date, e.name, e.email, e.affiliation, e.speakerType, e.title, e.talkType, e.status]
       .map(v => `"${(v || '').replace(/"/g, '""')}"`)
       .join(',')
   );
@@ -517,6 +605,16 @@ function bindEvents() {
     document.getElementById('custom-type-row').classList.toggle('hidden', e.target.value !== 'Other');
   });
 
+  document.getElementById('entry-email').addEventListener('blur', e => {
+    const inferred = inferFromEmail(e.target.value.trim());
+    if (!document.getElementById('entry-affiliation').value && inferred.affiliation) {
+      document.getElementById('entry-affiliation').value = inferred.affiliation;
+    }
+    if (!document.getElementById('entry-speaker-type').value && inferred.speakerType) {
+      document.getElementById('entry-speaker-type').value = inferred.speakerType;
+    }
+  });
+
   document.getElementById('entry-form').addEventListener('submit', e => {
     e.preventDefault();
     const year = document.getElementById('entry-year').value;
@@ -538,6 +636,7 @@ function bindEvents() {
 
   document.getElementById('search-input').addEventListener('input', renderTable);
   document.getElementById('filter-type').addEventListener('change', renderTable);
+  document.getElementById('filter-speaker-type').addEventListener('change', renderTable);
   document.getElementById('upcoming-only').addEventListener('change', renderTable);
 
   document.getElementById('btn-export-json').addEventListener('click', exportJSON);
@@ -552,6 +651,7 @@ async function init() {
   try {
     await loadData();
     cleanData();
+    enrichAllData();
     touchLastUpdated();
     bindEvents();
     render();

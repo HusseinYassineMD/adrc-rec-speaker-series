@@ -89,10 +89,100 @@ def extract_year_from_sheet(df: pd.DataFrame, sheet_name: str, xlsx_path: Path) 
 def find_header_row(df: pd.DataFrame) -> int | None:
     for i, row in df.iterrows():
         vals = [str(v).strip().lower() if pd.notna(v) else "" for v in row]
-        if "date" in vals and any(v in vals for v in ["name", "speaker", "title", "topic"]):
+        has_date = any("date" in v for v in vals)
+        has_speaker_col = any(v in vals for v in ["name", "speaker"])
+        has_content_col = any(v in vals for v in ["title", "topic"])
+        if has_date and (has_speaker_col or has_content_col):
             return i
     return None
 
+
+DOMAIN_AFFILIATIONS = {
+    "usc.edu": "USC",
+    "med.usc.edu": "USC",
+    "ucla.edu": "UCLA",
+    "g.ucla.edu": "UCLA",
+    "mednet.ucla.edu": "UCLA",
+    "uci.edu": "UC Irvine",
+    "ucsd.edu": "UC San Diego",
+    "health.ucsd.edu": "UC San Diego",
+    "ucsf.edu": "UCSF",
+    "ucsb.edu": "UC Santa Barbara",
+    "uw.edu": "University of Washington",
+    "mayo.edu": "Mayo Clinic",
+    "wustl.edu": "Washington University in St. Louis",
+    "cumc.columbia.edu": "Columbia University",
+    "columbia.edu": "Columbia University",
+    "wayne.edu": "Wayne State University",
+    "uky.edu": "University of Kentucky",
+    "brown.edu": "Brown University",
+    "rush.edu": "Rush University",
+    "duke.edu": "Duke University",
+    "ucf.edu": "University of Central Florida",
+    "clemson.edu": "Clemson University",
+    "utdallas.edu": "UT Dallas",
+    "fordham.edu": "Fordham University",
+    "adelphi.edu": "Adelphi University",
+    "ifh.rutgers.edu": "Rutgers University",
+    "rutgers.edu": "Rutgers University",
+    "uthscsa.edu": "UT Health San Antonio",
+    "uab.edu": "UAB",
+    "bannerhealth.com": "Banner Health",
+}
+
+
+def email_domain(email: str) -> str:
+    if not email or "@" not in email:
+        return ""
+    return email.strip().split("@")[-1].lower()
+
+
+def is_usc_affiliation(domain: str) -> bool:
+    return domain == "usc.edu" or domain.endswith(".usc.edu")
+
+
+def infer_affiliation(email: str) -> tuple[str, str]:
+    domain = email_domain(email)
+    if not domain:
+        return "", ""
+
+    if domain in DOMAIN_AFFILIATIONS:
+        affiliation = DOMAIN_AFFILIATIONS[domain]
+    elif is_usc_affiliation(domain):
+        affiliation = "USC"
+    else:
+        base = domain.split(".")[0]
+        affiliation = base.upper() if len(base) <= 4 else base.replace("-", " ").title()
+
+    speaker_type = "Internal" if is_usc_affiliation(domain) else "External"
+    return affiliation, speaker_type
+
+
+def enrich_entry(entry: dict) -> dict:
+    if entry.get("status") == "Open" or entry.get("name") == "Open slot":
+        entry.setdefault("affiliation", "")
+        entry.setdefault("speakerType", "")
+        return entry
+
+    email = entry.get("email", "")
+    inferred_affiliation, inferred_type = infer_affiliation(email)
+
+    if not entry.get("affiliation") and inferred_affiliation:
+        entry["affiliation"] = inferred_affiliation
+    if not entry.get("speakerType") and inferred_type:
+        entry["speakerType"] = inferred_type
+
+    entry.setdefault("affiliation", "")
+    entry.setdefault("speakerType", "")
+    return entry
+
+
+def enrich_all_data(data: dict) -> dict:
+    for year, info in data.items():
+        if year == "_meta":
+            continue
+        info["entries"] = [enrich_entry(dict(e)) for e in info["entries"]]
+    return data
 
 def build_col_map(headers: list[str]) -> dict:
     col_map = {}
@@ -223,6 +313,7 @@ def import_sheet(df: pd.DataFrame, year_label: str) -> list[dict]:
         if notes_str:
             entry["notes"] = notes_str
 
+        enrich_entry(entry)
         entries.append(entry)
 
     return entries
@@ -279,6 +370,7 @@ def main():
         sys.exit(1)
 
     data = merge_import(xlsx) if merge else import_excel(xlsx)
+    data = enrich_all_data(data)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(data, indent=2))
 

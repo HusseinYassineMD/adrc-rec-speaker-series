@@ -48,6 +48,11 @@
             </svg>
             <input type="search" id="search-input" placeholder="Search speakers, titles, emails…" autocomplete="off">
           </div>
+          <select id="filter-speaker-type" class="filter-select">
+            <option value="">All speakers</option>
+            <option value="Internal">USC (Internal)</option>
+            <option value="External">External</option>
+          </select>
           <select id="filter-type" class="filter-select">
             <option value="">All talk types</option>
           </select>
@@ -69,6 +74,8 @@
               <tr>
                 <th>Date</th>
                 <th>Speaker</th>
+                <th>Affiliation</th>
+                <th>Type</th>
                 <th>Title</th>
                 <th>Status</th>
                 <th class="actions-col">Actions</th>
@@ -108,6 +115,20 @@
         <div class="form-row">
           <label class="form-label" for="entry-email">Email</label>
           <input type="email" id="entry-email" class="form-input" placeholder="name@usc.edu">
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="entry-affiliation">University affiliation</label>
+          <input type="text" id="entry-affiliation" class="form-input" placeholder="e.g. USC, UCLA, Mayo Clinic">
+        </div>
+
+        <div class="form-row">
+          <label class="form-label" for="entry-speaker-type">Speaker type</label>
+          <select id="entry-speaker-type" class="form-input">
+            <option value="">— Auto-detect from email —</option>
+            <option value="Internal">Internal (USC)</option>
+            <option value="External">External</option>
+          </select>
         </div>
 
         <div class="form-row">
