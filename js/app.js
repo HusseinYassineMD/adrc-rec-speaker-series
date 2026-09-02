@@ -271,11 +271,6 @@ function escapeHtml(str) {
   return el.innerHTML;
 }
 
-  const el = document.createElement('span');
-  el.textContent = str;
-  return el.innerHTML;
-}
-
 function getTypeBadgeClass(talkType) {
   const t = (talkType || '').toLowerCase();
   if (t.includes('invited')) return 'invited';
