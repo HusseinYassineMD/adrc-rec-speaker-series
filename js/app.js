@@ -4,8 +4,13 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v4';
+const DATA_VERSION = '2026-09-02-v5';
 const VERSION_KEY = 'adrc-rec-data-version';
+
+const CONFIG = {
+  recordingsContactEmail: 'John.Ringman@med.usc.edu',
+  recordingsContactName: 'the ADRC REC team',
+};
 const META_KEY = 'adrc-rec-meta';
 const DEFAULT_YEAR = '2026-2027';
 
@@ -636,6 +641,16 @@ function downloadBlob(blob, filename) {
 // ── Init ────────────────────────────────────────────────────
 
 function bindEvents() {
+  const recordingsLink = document.getElementById('recordings-access-link');
+  if (recordingsLink) {
+    const subject = encodeURIComponent('Request access to REC seminar recordings');
+    const body = encodeURIComponent(
+      'Hello,\n\nI would like to request access to ADRC REC seminar recordings.\n\nName:\nAffiliation:\nTalk date or speaker (if known):\n\nThank you.'
+    );
+    recordingsLink.href = `mailto:${CONFIG.recordingsContactEmail}?subject=${subject}&body=${body}`;
+    recordingsLink.title = `Email ${CONFIG.recordingsContactName}`;
+  }
+
   document.getElementById('btn-add-entry').addEventListener('click', () => openModal(currentYear));
   document.getElementById('btn-add-from-empty').addEventListener('click', () => openModal(currentYear));
   document.getElementById('modal-close').addEventListener('click', closeModal);
