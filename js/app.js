@@ -375,6 +375,9 @@ function renderStats() {
   const external = booked.filter(e => e.speakerType === 'External').length;
   const openSlots = getOpenSlots(currentYear).length;
   const upcoming = getUpcomingSpeakers(currentYear).length;
+  const past = getPastSpeakers(currentYear).length;
+  const fourthValue = openSlots || upcoming || past;
+  const fourthLabel = openSlots ? 'Open slots' : upcoming ? 'Upcoming talks' : 'Completed talks';
 
   document.getElementById('stats-bar').innerHTML = `
     <div class="stat-card highlight">
@@ -390,8 +393,8 @@ function renderStats() {
       <div class="stat-label">External</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value">${openSlots || upcoming}</div>
-      <div class="stat-label">${openSlots ? 'Open slots' : 'Upcoming talks'}</div>
+      <div class="stat-value">${fourthValue}</div>
+      <div class="stat-label">${fourthLabel}</div>
     </div>
   `;
 }
