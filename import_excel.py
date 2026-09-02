@@ -158,6 +158,31 @@ def infer_affiliation(email: str) -> tuple[str, str]:
     return affiliation, speaker_type
 
 
+def infer_from_talk_type(talk_type: str) -> tuple[str, str]:
+    talk = (talk_type or "").strip().lower()
+    if not talk:
+        return "", ""
+    if "external" in talk or "national webinar" in talk:
+        return "External institution", "External"
+    return "USC", "Internal"
+
+
+def infer_from_name(name: str) -> tuple[str, str]:
+    if not name or name == "Open slot":
+        return "", ""
+
+    guest_match = re.search(r"\(guest,\s*([^)]+)\)", name, re.I)
+    if guest_match:
+        institution = guest_match.group(1).strip()
+        return institution, "External"
+
+    lowered = name.lower()
+    if "guest" in lowered or "external" in lowered:
+        return "External institution", "External"
+
+    return "USC", "Internal"
+
+
 def enrich_entry(entry: dict) -> dict:
     if entry.get("status") == "Open" or entry.get("name") == "Open slot":
         entry.setdefault("affiliation", "")
@@ -166,6 +191,16 @@ def enrich_entry(entry: dict) -> dict:
 
     email = entry.get("email", "")
     inferred_affiliation, inferred_type = infer_affiliation(email)
+
+    if not inferred_affiliation or not inferred_type:
+        talk_affiliation, talk_type_label = infer_from_talk_type(entry.get("talkType", ""))
+        inferred_affiliation = inferred_affiliation or talk_affiliation
+        inferred_type = inferred_type or talk_type_label
+
+    if not inferred_affiliation or not inferred_type:
+        name_affiliation, name_type = infer_from_name(entry.get("name", ""))
+        inferred_affiliation = inferred_affiliation or name_affiliation
+        inferred_type = inferred_type or name_type
 
     if not entry.get("affiliation") and inferred_affiliation:
         entry["affiliation"] = inferred_affiliation

@@ -3,7 +3,7 @@
  * Data persists in localStorage; initial load from data/speakers.json
  */
 
-const STORAGE_KEY = 'adrc-rec-speaker-series';
+const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
 const META_KEY = 'adrc-rec-meta';
 const DEFAULT_YEAR = '2026-2027';
 
@@ -81,7 +81,7 @@ function getEntries(year) {
 function cleanData() {
   let changed = false;
   Object.keys(data).forEach(year => {
-    if (year === '_meta') return;
+    if (year === '_meta' || !data[year]?.entries) return;
     const before = data[year].entries.length;
     data[year].entries = data[year].entries.filter(e => e.entryType !== 'blocked');
     data[year].entries.forEach(e => delete e.entryType);
@@ -188,6 +188,10 @@ function getSpeakerEntries(year) {
   return getEntries(year);
 }
 
+function getBookedEntries(year) {
+  return getSpeakerEntries(year).filter(e => e.status !== 'Open' && e.name !== 'Open slot');
+}
+
 function getUpcomingSpeakers(year) {
   return getSpeakerEntries(year).filter(e => isUpcoming(e.date) && e.status !== 'Open');
 }
@@ -244,17 +248,49 @@ function inferFromEmail(email) {
   return { affiliation, speakerType: 'External' };
 }
 
+function inferFromTalkType(talkType) {
+  const talk = (talkType || '').toLowerCase();
+  if (!talk) return { affiliation: '', speakerType: '' };
+  if (talk.includes('external') || talk.includes('national webinar')) {
+    return { affiliation: 'External institution', speakerType: 'External' };
+  }
+  return { affiliation: 'USC', speakerType: 'Internal' };
+}
+
+function inferFromName(name) {
+  if (!name || name === 'Open slot') return { affiliation: '', speakerType: '' };
+
+  const guestMatch = name.match(/\(guest,\s*([^)]+)\)/i);
+  if (guestMatch) {
+    return { affiliation: guestMatch[1].trim(), speakerType: 'External' };
+  }
+
+  const lowered = name.toLowerCase();
+  if (lowered.includes('guest') || lowered.includes('external')) {
+    return { affiliation: 'External institution', speakerType: 'External' };
+  }
+
+  return { affiliation: 'USC', speakerType: 'Internal' };
+}
+
 function enrichEntry(entry) {
   if (entry.status === 'Open' || entry.name === 'Open slot') {
     entry.affiliation = entry.affiliation || '';
     entry.speakerType = entry.speakerType || '';
     return entry;
   }
-  if (!entry.affiliation || !entry.speakerType) {
-    const inferred = inferFromEmail(entry.email);
-    entry.affiliation = entry.affiliation || inferred.affiliation;
-    entry.speakerType = entry.speakerType || inferred.speakerType;
-  }
+
+  let affiliation = entry.affiliation || '';
+  let speakerType = entry.speakerType || '';
+  const fromEmail = inferFromEmail(entry.email);
+  const fromTalk = inferFromTalkType(entry.talkType);
+  const fromName = inferFromName(entry.name);
+
+  if (!affiliation) affiliation = fromEmail.affiliation || fromTalk.affiliation || fromName.affiliation;
+  if (!speakerType) speakerType = fromEmail.speakerType || fromTalk.speakerType || fromName.speakerType;
+
+  entry.affiliation = affiliation || '';
+  entry.speakerType = speakerType || '';
   return entry;
 }
 
@@ -334,15 +370,16 @@ function renderLastUpdated() {
 }
 
 function renderStats() {
-  const upcoming = getUpcomingSpeakers(currentYear);
-  const openSlots = getOpenSlots(currentYear);
-  const internal = upcoming.filter(e => e.speakerType === 'Internal').length;
-  const external = upcoming.filter(e => e.speakerType === 'External').length;
+  const booked = getBookedEntries(currentYear);
+  const internal = booked.filter(e => e.speakerType === 'Internal').length;
+  const external = booked.filter(e => e.speakerType === 'External').length;
+  const openSlots = getOpenSlots(currentYear).length;
+  const upcoming = getUpcomingSpeakers(currentYear).length;
 
   document.getElementById('stats-bar').innerHTML = `
     <div class="stat-card highlight">
-      <div class="stat-value">${upcoming.length}</div>
-      <div class="stat-label">Booked (upcoming)</div>
+      <div class="stat-value">${booked.length}</div>
+      <div class="stat-label">Total speakers</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">${internal}</div>
@@ -353,8 +390,8 @@ function renderStats() {
       <div class="stat-label">External</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value">${openSlots.length}</div>
-      <div class="stat-label">Open slots</div>
+      <div class="stat-value">${openSlots || upcoming}</div>
+      <div class="stat-label">${openSlots ? 'Open slots' : 'Upcoming talks'}</div>
     </div>
   `;
 }
