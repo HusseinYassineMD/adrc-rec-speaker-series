@@ -4,6 +4,8 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
+const DATA_VERSION = '2026-09-02-v4';
+const VERSION_KEY = 'adrc-rec-data-version';
 const META_KEY = 'adrc-rec-meta';
 const DEFAULT_YEAR = '2026-2027';
 
@@ -15,6 +17,12 @@ let editingId = null;
 // ── Data layer ──────────────────────────────────────────────
 
 async function loadData() {
+  if (localStorage.getItem(VERSION_KEY) !== DATA_VERSION) {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(META_KEY);
+    localStorage.setItem(VERSION_KEY, DATA_VERSION);
+  }
+
   const storedMeta = localStorage.getItem(META_KEY);
   if (storedMeta) {
     try {

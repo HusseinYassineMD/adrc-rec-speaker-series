@@ -206,10 +206,11 @@ body {
 }
 
 .stat-value {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--cardinal);
   line-height: 1.2;
+  min-height: 2rem;
 }
 
 .stat-label {
