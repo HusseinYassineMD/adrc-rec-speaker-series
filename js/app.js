@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v11';
+const DATA_VERSION = '2026-09-02-v12';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
@@ -45,17 +45,23 @@ async function loadData() {
     try {
       data = JSON.parse(stored);
       extractMetaFromData();
-      return;
+      if (isValidData(data)) return;
+      localStorage.removeItem(STORAGE_KEY);
     } catch {
       localStorage.removeItem(STORAGE_KEY);
     }
   }
 
-  const res = await fetch('data/speakers.json');
-  if (!res.ok) throw new Error('Could not load speakers.json');
-  const loaded = await res.json();
+  const loaded = await fetchSpeakerJson();
   extractMetaFromPayload(loaded);
   saveData(false, false);
+}
+
+function isValidData(payload) {
+  if (!payload || typeof payload !== 'object') return false;
+  const years = Object.keys(payload).filter(k => k !== '_meta');
+  if (!years.length) return false;
+  return years.every(y => Array.isArray(payload[y]?.entries));
 }
 
 function extractMetaFromPayload(payload) {
@@ -315,14 +321,6 @@ function enrichAllData() {
     if (year === '_meta' || !data[year]?.entries) return;
     data[year].entries = data[year].entries.map(e => enrichEntry({ ...e }));
   });
-}
-
-function assertValidEnvironment() {
-  if (location.protocol === 'file:') {
-    throw new Error(
-      'Open the live dashboard or run a local server — do not open the HTML file directly from your computer.'
-    );
-  }
 }
 
 function showFatalError(message) {
@@ -774,7 +772,6 @@ function bindEvents() {
 
 async function init() {
   try {
-    assertValidEnvironment();
     await loadData();
     cleanData();
     enrichAllData();

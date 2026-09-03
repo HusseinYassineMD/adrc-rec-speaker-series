@@ -3,7 +3,7 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v11';
+const DATA_VERSION = '2026-09-02-v12';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
@@ -117,16 +117,22 @@ async function loadData() {
     try {
       data = JSON.parse(stored);
       if (data._meta) delete data._meta;
-      return;
+      if (isValidData(data)) return;
+      localStorage.removeItem(STORAGE_KEY);
     } catch {
       localStorage.removeItem(STORAGE_KEY);
     }
   }
 
-  const res = await fetch('data/speakers.json');
-  if (!res.ok) throw new Error('Could not load speakers.json');
-  data = await res.json();
+  data = await fetchSpeakerJson();
   if (data._meta) delete data._meta;
+}
+
+function isValidData(payload) {
+  if (!payload || typeof payload !== 'object') return false;
+  const years = Object.keys(payload).filter(k => k !== '_meta');
+  if (!years.length) return false;
+  return years.every(y => Array.isArray(payload[y]?.entries));
 }
 
 function getUpcomingEntries() {
@@ -414,28 +420,8 @@ function bindEvents() {
   document.getElementById('flyer-schedule-url').value = CONFIG.adrcWebsiteUrl;
 }
 
-function assertValidEnvironment() {
-  if (location.protocol === 'file:') {
-    throw new Error(
-      'Open the live site or run a local server — do not open the HTML file directly from your computer.'
-    );
-  }
-}
-
-function showFatalError(message) {
-  const main = document.querySelector('.marketing-main');
-  if (!main) return;
-  main.innerHTML = `
-    <div class="panel">
-      <p><strong>Flyer page could not load.</strong></p>
-      <p>${escapeHtml(message)}</p>
-      <p><a href="https://husseinyassinemd.github.io/adrc-rec-speaker-series/marketing.html">Open live flyer page</a></p>
-    </div>`;
-}
-
 async function init() {
   try {
-    assertValidEnvironment();
     setupContactBanner();
     await loadData();
     bindEvents();
@@ -446,7 +432,15 @@ async function init() {
     }
   } catch (err) {
     console.error(err);
-    showFatalError(err.message || 'Could not load speaker data.');
+    const main = document.querySelector('.marketing-main');
+    if (main) {
+      main.innerHTML = `
+        <div class="panel">
+          <p><strong>Flyer page could not load.</strong></p>
+          <p>${escapeHtml(err.message || 'Could not load speaker data.')}</p>
+          <p><a href="https://husseinyassinemd.github.io/adrc-rec-speaker-series/marketing.html">Open live flyer page</a></p>
+        </div>`;
+    }
   }
 }
 

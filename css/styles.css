@@ -574,6 +574,11 @@ body {
 
 .empty-state p { margin-bottom: 1rem; }
 
+.empty-state a {
+  color: var(--cardinal);
+  font-weight: 600;
+}
+
 .hidden { display: none !important; }
 
 /* Footer */
