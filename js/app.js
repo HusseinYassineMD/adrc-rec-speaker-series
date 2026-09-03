@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v6';
+const DATA_VERSION = '2026-09-02-v7';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
@@ -330,6 +330,25 @@ function getTypeBadgeClass(talkType) {
   return '';
 }
 
+function hasRecordingAccess(entry) {
+  if (!entry || entry.status === 'Open' || entry.name === 'Open slot') return false;
+  if (isUpcoming(entry.date)) return false;
+  return Boolean((entry.recordingUrl || '').trim() || CONFIG.recordingsAccessUrl);
+}
+
+function getRecordingCellHtml(entry) {
+  if (!hasRecordingAccess(entry)) return '—';
+
+  const directUrl = (entry.recordingUrl || '').trim();
+  const url = directUrl || CONFIG.recordingsAccessUrl;
+  const label = directUrl ? 'Watch' : 'Archive';
+  const title = directUrl
+    ? 'Open this seminar recording on OneDrive'
+    : 'Open ADRC REC recordings folder on OneDrive';
+
+  return `<a class="recording-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(title)}">${label}</a>`;
+}
+
 function getAllTalkTypes() {
   const types = new Set();
   Object.values(data).forEach(year => {
@@ -496,6 +515,7 @@ function renderTable() {
         </td>
         <td class="title-cell">${escapeHtml((e.title || 'Topic TBD').replace(/^"|"$/g, ''))}</td>
         <td><span class="type-badge ${badgeClass}">${escapeHtml(statusLabel)}</span></td>
+        <td class="recording-cell">${getRecordingCellHtml(e)}</td>
         <td class="actions-col">
           <div class="row-actions">
             <button type="button" class="btn-icon btn-edit" title="Edit" data-id="${e.id}">✎</button>
@@ -550,6 +570,7 @@ function populateForm(entry) {
   document.getElementById('entry-title').value = entry.title || '';
   document.getElementById('entry-affiliation').value = entry.affiliation || '';
   document.getElementById('entry-speaker-type').value = entry.speakerType || '';
+  document.getElementById('entry-recording-url').value = entry.recordingUrl || '';
 
   const presetTypes = ['Invited Speaker', 'External Speaker', 'Career Development', 'Case Conference', 'National Webinar', 'Journal Club'];
   const talkSelect = document.getElementById('entry-talk-type');
@@ -585,6 +606,8 @@ function getFormEntry() {
   if (!affiliation) affiliation = inferred.affiliation;
   if (!speakerType) speakerType = inferred.speakerType;
 
+  const recordingUrl = document.getElementById('entry-recording-url').value.trim();
+
   return {
     id,
     name: document.getElementById('entry-name').value.trim(),
@@ -595,6 +618,7 @@ function getFormEntry() {
     affiliation,
     speakerType,
     status: 'Booked',
+    recordingUrl,
   };
 }
 
@@ -619,9 +643,9 @@ function exportJSON() {
 
 function exportCSV() {
   const entries = getEntries(currentYear);
-  const headers = ['Date', 'Name', 'Email', 'Affiliation', 'Speaker Type', 'Title', 'Talk Type', 'Status'];
+  const headers = ['Date', 'Name', 'Email', 'Affiliation', 'Speaker Type', 'Title', 'Talk Type', 'Status', 'Recording URL'];
   const rows = entries.map(e =>
-    [e.date, e.name, e.email, e.affiliation, e.speakerType, e.title, e.talkType, e.status]
+    [e.date, e.name, e.email, e.affiliation, e.speakerType, e.title, e.talkType, e.status, e.recordingUrl]
       .map(v => `"${(v || '').replace(/"/g, '""')}"`)
       .join(',')
   );

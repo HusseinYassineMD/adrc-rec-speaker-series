@@ -84,6 +84,7 @@
                 <th class="col-type">Type</th>
                 <th class="col-title">Title</th>
                 <th class="col-status">Status</th>
+                <th class="col-recording">Recording</th>
                 <th class="col-actions actions-col">Actions</th>
               </tr>
             </thead>
@@ -166,6 +167,12 @@
           <input type="text" id="entry-talk-type-custom" class="form-input" placeholder="e.g. Invited Speaker [by Dr. Ringman]">
         </div>
 
+        <div class="form-row">
+          <label class="form-label" for="entry-recording-url">Recording link <span class="form-optional">(optional)</span></label>
+          <input type="url" id="entry-recording-url" class="form-input" placeholder="Paste OneDrive link for this talk's video">
+          <p class="form-hint">Past talks without a direct link show an Archive button to the shared OneDrive folder.</p>
+        </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-danger hidden" id="btn-delete-entry">Delete</button>
           <div class="modal-footer-right">
@@ -179,6 +186,6 @@
 
   <div class="toast hidden" id="toast"></div>
 
-  <script src="js/app.js?v=6"></script>
+  <script src="js/app.js?v=7"></script>
 </body>
 </html>

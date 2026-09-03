@@ -366,8 +366,9 @@ body {
 .col-speaker { width: 15%; }
 .col-affiliation { width: 12%; }
 .col-type { width: 7%; }
-.col-title { width: 34%; }
-.col-status { width: 8%; }
+.col-title { width: 28%; }
+.col-status { width: 7%; }
+.col-recording { width: 8%; }
 .col-actions { width: 7%; }
 
 .schedule-table th,
@@ -495,6 +496,31 @@ body {
 .type-badge.external { background: #e0e7ff; color: #3730a3; }
 
 .type-cell { white-space: nowrap; }
+
+.recording-cell {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.recording-link {
+  color: var(--cardinal);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.recording-link:hover { text-decoration: underline; }
+
+.form-optional {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.form-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
 
 
 .schedule-table tbody tr.row-open {
