@@ -4,13 +4,13 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v7';
+const DATA_VERSION = '2026-09-02-v8';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
   recordingsAccessUrl: 'https://uscedu-my.sharepoint.com/shared?listurl=https%3A%2F%2Fuscedu%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Fchangell%5Fusc%5Fedu%2FDocuments&e=5%3A7cf79c4a1354421c8bb8c7cabf18356c&sharingv2=true&fromShare=true&at=9&id=%2Fpersonal%2Fchangell%5Fusc%5Fedu%2FDocuments%2FNeurobehavior%20Conference%2FADRC%20REC%20Training%20Core&FolderCTID=0x0120005B95EFCE83E1EC4585EE44F71B3E15D4',
-  recordingsContactEmail: 'John.Ringman@med.usc.edu',
-  recordingsContactName: 'the ADRC REC team',
+  recordingsContactEmail: 'nikkhahb@usc.edu',
+  recordingsContactName: 'Sahar Nikkhah Bahrami',
 };
 const META_KEY = 'adrc-rec-meta';
 const DEFAULT_YEAR = '2026-2027';
@@ -667,11 +667,13 @@ function downloadBlob(blob, filename) {
 
 function bindEvents() {
   const recordingsLink = document.getElementById('recordings-access-link');
-  if (recordingsLink && CONFIG.recordingsAccessUrl) {
-    recordingsLink.href = CONFIG.recordingsAccessUrl;
-    recordingsLink.target = '_blank';
-    recordingsLink.rel = 'noopener noreferrer';
-    recordingsLink.title = 'Open ADRC REC Training Core recordings on USC OneDrive';
+  if (recordingsLink && CONFIG.recordingsContactEmail) {
+    const subject = encodeURIComponent('Request access to REC seminar recordings');
+    const body = encodeURIComponent(
+      'Hello,\n\nI would like to request access to ADRC REC seminar recordings.\n\nName:\nAffiliation:\nTalk date or speaker (if known):\n\nThank you.'
+    );
+    recordingsLink.href = `mailto:${CONFIG.recordingsContactEmail}?subject=${subject}&body=${body}`;
+    recordingsLink.title = `Email ${CONFIG.recordingsContactName} to request access`;
   }
 
   document.getElementById('btn-add-entry').addEventListener('click', () => openModal(currentYear));
