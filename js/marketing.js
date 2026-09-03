@@ -417,14 +417,22 @@ function buildFlyerFilename() {
   return `adrc-rec-flyer-${f.date || 'undated'}-${slugifyFilename(f.name)}.pdf`;
 }
 
+function getJsPDFConstructor() {
+  if (window.jspdf?.jsPDF) return window.jspdf.jsPDF;
+  if (typeof window.jsPDF === 'function') return window.jsPDF;
+  return null;
+}
+
 async function downloadFlyer() {
   const btn = document.getElementById('btn-download-flyer');
   const flyer = document.getElementById('flyer');
 
-  if (!window.html2canvas || !window.jspdf) {
+  if (typeof window.html2canvas !== 'function') {
     showToast('Download tools failed to load — refresh the page');
     return;
   }
+
+  const JsPDF = getJsPDFConstructor();
 
   btn.disabled = true;
   const originalLabel = btn.textContent;
@@ -438,20 +446,29 @@ async function downloadFlyer() {
       logging: false,
     });
 
-    const imgData = canvas.toDataURL('image/jpeg', 0.95);
-    const pdf = new window.jspdf.jsPDF({
-      orientation: 'portrait',
-      unit: 'in',
-      format: 'letter',
-      compress: true,
-    });
+    if (JsPDF) {
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
+      const pdf = new JsPDF({
+        orientation: 'portrait',
+        unit: 'in',
+        format: 'letter',
+        compress: true,
+      });
+      pdf.addImage(imgData, 'JPEG', 0, 0, 8.5, 11);
+      pdf.save(buildFlyerFilename());
+      showToast('Flyer downloaded');
+      return;
+    }
 
-    pdf.addImage(imgData, 'JPEG', 0, 0, 8.5, 11);
-    pdf.save(buildFlyerFilename());
-    showToast('Flyer downloaded');
+    const pngName = buildFlyerFilename().replace(/\.pdf$/i, '.png');
+    const link = document.createElement('a');
+    link.download = pngName;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    showToast('Flyer downloaded (PNG)');
   } catch (err) {
     console.error(err);
-    showToast('Download failed — check headshot URL or try again');
+    showToast('Download failed — remove headshot URL and try again');
   } finally {
     btn.disabled = false;
     btn.textContent = originalLabel;
