@@ -26,34 +26,19 @@
 
 .header-marketing .header-brand {
   align-items: center;
-  gap: 1.15rem;
+  gap: 1.25rem;
 }
 
-.header-logo-marketing {
-  width: 58px;
-  height: 58px;
-  flex-direction: column;
-  gap: 0;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 2px solid rgba(255, 204, 0, 0.85);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+.brand-mark {
+  flex-shrink: 0;
+  line-height: 0;
 }
 
-.header-logo-marketing .logo-top {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  line-height: 1;
-  color: var(--gold);
-}
-
-.header-logo-marketing .logo-bottom {
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.1;
-  color: white;
+.brand-mark-svg {
+  display: block;
+  width: 4.25rem;
+  height: 4.25rem;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
 }
 
 .header-titles { min-width: 0; }
@@ -189,23 +174,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.15rem;
+  gap: 0.5rem;
 }
 
-.flyer-brand-mark {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+.flyer-brand-svg {
+  display: block;
+  width: 3.25rem;
+  height: 3.25rem;
 }
 
 .flyer-brand-text {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   opacity: 0.92;
-  line-height: 1.3;
-  max-width: 18rem;
+  line-height: 1.35;
+  max-width: 16rem;
+  text-align: center;
 }
 
 .flyer-series-label {

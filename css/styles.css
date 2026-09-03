@@ -66,6 +66,23 @@ body {
   letter-spacing: 0.05em;
 }
 
+.brand-mark {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.brand-mark-svg {
+  display: block;
+  width: 3.25rem;
+  height: 3.25rem;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.2));
+}
+
+.brand-mark-sm .brand-mark-svg {
+  width: 3.25rem;
+  height: 3.25rem;
+}
+
 .header h1 {
   margin: 0;
   font-size: 1.5rem;
