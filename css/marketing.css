@@ -466,23 +466,6 @@
 
 .header-actions a.btn { text-decoration: none; display: inline-flex; align-items: center; }
 
-/* Print */
-@media print {
-  body * { visibility: hidden; }
-  .flyer-newsletter, .flyer-newsletter * { visibility: visible; }
-  .flyer-newsletter {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 8.5in;
-    height: 11in;
-    max-width: none;
-    aspect-ratio: auto;
-    box-shadow: none;
-    page-break-inside: avoid;
-  }
-}
-
 @media (max-width: 960px) {
   .marketing-layout { grid-template-columns: 1fr; }
   .form-row-split { grid-template-columns: 1fr; }

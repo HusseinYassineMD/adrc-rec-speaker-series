@@ -262,6 +262,7 @@ function updatePreview() {
   defaultHero.hidden = false;
 
   if (f.headshotUrl) {
+    speakerImg.crossOrigin = 'anonymous';
     speakerImg.src = f.headshotUrl;
     speakerImg.alt = name;
     speakerImg.hidden = false;
@@ -403,6 +404,60 @@ function saveToEntry() {
   showToast('Saved to schedule entry (local)');
 }
 
+function slugifyFilename(str) {
+  return (str || 'seminar')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, 40) || 'seminar';
+}
+
+function buildFlyerFilename() {
+  const f = readForm();
+  return `adrc-rec-flyer-${f.date || 'undated'}-${slugifyFilename(f.name)}.pdf`;
+}
+
+async function downloadFlyer() {
+  const btn = document.getElementById('btn-download-flyer');
+  const flyer = document.getElementById('flyer');
+
+  if (!window.html2canvas || !window.jspdf) {
+    showToast('Download tools failed to load — refresh the page');
+    return;
+  }
+
+  btn.disabled = true;
+  const originalLabel = btn.textContent;
+  btn.textContent = 'Preparing…';
+
+  try {
+    const canvas = await html2canvas(flyer, {
+      scale: 3,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      logging: false,
+    });
+
+    const imgData = canvas.toDataURL('image/jpeg', 0.95);
+    const pdf = new window.jspdf.jsPDF({
+      orientation: 'portrait',
+      unit: 'in',
+      format: 'letter',
+      compress: true,
+    });
+
+    pdf.addImage(imgData, 'JPEG', 0, 0, 8.5, 11);
+    pdf.save(buildFlyerFilename());
+    showToast('Flyer downloaded');
+  } catch (err) {
+    console.error(err);
+    showToast('Download failed — check headshot URL or try again');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = originalLabel;
+  }
+}
+
 function bindEvents() {
   document.getElementById('select-talk').addEventListener('change', e => {
     if (!e.target.value) return;
@@ -418,7 +473,7 @@ function bindEvents() {
   });
 
   document.getElementById('btn-save-to-entry').addEventListener('click', saveToEntry);
-  document.getElementById('btn-print-flyer').addEventListener('click', () => window.print());
+  document.getElementById('btn-download-flyer').addEventListener('click', downloadFlyer);
 }
 
 async function init() {

@@ -31,7 +31,7 @@
         </div>
         <div class="header-actions">
           <a href="index.html" class="btn btn-ghost" id="nav-schedule">← Schedule</a>
-          <button type="button" class="btn btn-primary btn-glow" id="btn-print-flyer">Print / Save flyer</button>
+          <button type="button" class="btn btn-primary btn-glow" id="btn-download-flyer">Download flyer</button>
         </div>
       </div>
     </header>
@@ -93,7 +93,7 @@
 
         <section class="flyer-preview-panel panel">
           <h2>Flyer preview</h2>
-          <p class="panel-intro">USC ADRC newsletter-style flyer · print or save as PDF</p>
+          <p class="panel-intro">USC ADRC newsletter-style flyer · download as a one-page PDF</p>
           <div class="flyer-preview-wrap">
             <article class="flyer flyer-newsletter" id="flyer" aria-label="Seminar flyer preview">
               <div class="flyer-sidebar" aria-hidden="true"></div>
@@ -159,7 +159,7 @@
 
       <section class="linkedin-section panel">
         <h2>LinkedIn announcement workflow</h2>
-        <p class="panel-intro">Post on these dates relative to the seminar. Copy text, attach the printed flyer image, and publish on LinkedIn.</p>
+        <p class="panel-intro">Post on these dates relative to the seminar. Copy text, attach the downloaded flyer, and publish on LinkedIn.</p>
 
         <div class="linkedin-dates" id="linkedin-dates"></div>
 
@@ -174,7 +174,9 @@
 
   <div class="toast hidden" id="toast"></div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js" crossorigin="anonymous"></script>
   <script src="js/data-loader.js?v=1"></script>
-  <script src="js/marketing.js?v=8"></script>
+  <script src="js/marketing.js?v=9"></script>
 </body>
 </html>
