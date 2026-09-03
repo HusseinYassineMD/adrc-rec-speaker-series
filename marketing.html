@@ -2,6 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      var repo = 'adrc-rec-speaker-series';
+      var base = './';
+      if (location.hostname.endsWith('github.io')) {
+        base = '/' + repo + '/';
+      } else {
+        var path = location.pathname;
+        base = path.substring(0, path.lastIndexOf('/') + 1) || './';
+      }
+      window.APP_BASE = base;
+      var tag = document.createElement('base');
+      tag.href = base;
+      document.head.appendChild(tag);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flyer &amp; LinkedIn · ADRC REC Speaker Series</title>
   <link rel="stylesheet" href="css/styles.css">
@@ -22,7 +38,7 @@
           </div>
         </div>
         <div class="header-actions">
-          <a href="index.html" class="btn btn-secondary">← Back to schedule</a>
+          <a href="index.html" class="btn btn-secondary" id="nav-schedule">← Back to schedule</a>
           <button type="button" class="btn btn-primary" id="btn-print-flyer">Print / Save flyer</button>
         </div>
       </div>
@@ -154,6 +170,6 @@
 
   <div class="toast hidden" id="toast"></div>
 
-  <script src="js/marketing.js?v=1"></script>
+  <script src="js/marketing.js?v=2"></script>
 </body>
 </html>

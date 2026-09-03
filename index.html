@@ -2,6 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>
+    (function () {
+      var repo = 'adrc-rec-speaker-series';
+      var base = './';
+      if (location.hostname.endsWith('github.io')) {
+        base = '/' + repo + '/';
+      } else {
+        var path = location.pathname;
+        base = path.substring(0, path.lastIndexOf('/') + 1) || './';
+      }
+      window.APP_BASE = base;
+      var tag = document.createElement('base');
+      tag.href = base;
+      document.head.appendChild(tag);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ADRC REC Speaker Series Dashboard</title>
   <link rel="stylesheet" href="css/styles.css">
@@ -21,7 +37,7 @@
           </div>
         </div>
         <div class="header-actions">
-          <a href="marketing.html" class="btn btn-secondary">Flyer &amp; LinkedIn</a>
+          <a href="marketing.html" class="btn btn-secondary" id="nav-marketing">Flyer &amp; LinkedIn</a>
           <button type="button" class="btn btn-secondary" id="btn-export-json" title="Download JSON backup">Export JSON</button>
           <button type="button" class="btn btn-secondary" id="btn-export-csv" title="Download CSV for current year">Export CSV</button>
           <button type="button" class="btn btn-primary" id="btn-add-entry">+ Add Entry</button>
@@ -211,6 +227,6 @@
 
   <div class="toast hidden" id="toast"></div>
 
-  <script src="js/app.js?v=9"></script>
+  <script src="js/app.js?v=10"></script>
 </body>
 </html>

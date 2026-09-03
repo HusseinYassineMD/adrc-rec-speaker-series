@@ -3,7 +3,7 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v9';
+const DATA_VERSION = '2026-09-02-v10';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
@@ -123,7 +123,7 @@ async function loadData() {
     }
   }
 
-  const res = await fetch('data/speakers.json');
+  const res = await fetch(`${window.APP_BASE || './'}data/speakers.json`);
   if (!res.ok) throw new Error('Could not load speakers.json');
   data = await res.json();
   if (data._meta) delete data._meta;

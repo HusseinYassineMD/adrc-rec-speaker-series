@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v9';
+const DATA_VERSION = '2026-09-02-v10';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
@@ -50,7 +50,7 @@ async function loadData() {
     }
   }
 
-  const res = await fetch('data/speakers.json');
+  const res = await fetch(`${window.APP_BASE || './'}data/speakers.json`);
   if (!res.ok) throw new Error('Could not load speakers.json');
   const loaded = await res.json();
   extractMetaFromPayload(loaded);
@@ -519,7 +519,7 @@ function renderTable() {
         <td class="recording-cell">${getRecordingCellHtml(e)}</td>
         <td class="actions-col">
           <div class="row-actions">
-            ${upcoming && !isOpen ? `<a class="btn-icon btn-flyer" href="marketing.html?year=${encodeURIComponent(currentYear)}&amp;id=${encodeURIComponent(e.id)}" title="Flyer &amp; LinkedIn">📣</a>` : ''}
+            ${upcoming && !isOpen ? `<a class="btn-icon btn-flyer" href="${window.APP_BASE || ''}marketing.html?year=${encodeURIComponent(currentYear)}&amp;id=${encodeURIComponent(e.id)}" title="Flyer &amp; LinkedIn">📣</a>` : ''}
             <button type="button" class="btn-icon btn-edit" title="Edit" data-id="${e.id}">✎</button>
             <button type="button" class="btn-icon btn-delete" title="Delete" data-id="${e.id}">🗑</button>
           </div>
