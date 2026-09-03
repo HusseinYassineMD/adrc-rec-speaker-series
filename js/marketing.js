@@ -9,6 +9,7 @@ const VERSION_KEY = 'adrc-rec-data-version';
 const CONFIG = {
   scheduleDashboardUrl: 'https://husseinyassinemd.github.io/adrc-rec-speaker-series/',
   defaultMeetingTime: 'Fridays · 1:00–2:00 PM Pacific Time',
+  defaultHeroImage: 'assets/flyer-hero-default.jpg',
   marketingContactName: 'Aishwarya',
   marketingContactEmail: '',
   coordinatorName: 'Sahar Nikkhah Bahrami',
@@ -254,25 +255,22 @@ function updatePreview() {
   document.getElementById('flyer-preview-cta').textContent =
     f.meetingLink ? 'Register for this seminar' : 'Registration link coming soon';
 
-  const img = document.getElementById('flyer-headshot-img');
-  const placeholder = document.getElementById('flyer-headshot-placeholder');
-  const initialsEl = placeholder.querySelector('.flyer-hero-initials');
+  const defaultHero = document.getElementById('flyer-hero-default');
+  const speakerImg = document.getElementById('flyer-headshot-img');
+
+  defaultHero.src = CONFIG.defaultHeroImage;
+  defaultHero.hidden = false;
 
   if (f.headshotUrl) {
-    img.src = f.headshotUrl;
-    img.alt = name;
-    img.hidden = false;
-    placeholder.hidden = true;
-    img.onerror = () => {
-      img.hidden = true;
-      placeholder.hidden = false;
-      if (initialsEl) initialsEl.textContent = getInitials(name);
+    speakerImg.src = f.headshotUrl;
+    speakerImg.alt = name;
+    speakerImg.hidden = false;
+    speakerImg.onerror = () => {
+      speakerImg.hidden = true;
     };
   } else {
-    img.hidden = true;
-    img.removeAttribute('src');
-    placeholder.hidden = false;
-    if (initialsEl) initialsEl.textContent = getInitials(name);
+    speakerImg.hidden = true;
+    speakerImg.removeAttribute('src');
   }
 }
 
