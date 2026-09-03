@@ -4,13 +4,14 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v8';
+const DATA_VERSION = '2026-09-02-v9';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
   recordingsAccessUrl: 'https://uscedu-my.sharepoint.com/shared?listurl=https%3A%2F%2Fuscedu%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Fchangell%5Fusc%5Fedu%2FDocuments&e=5%3A7cf79c4a1354421c8bb8c7cabf18356c&sharingv2=true&fromShare=true&at=9&id=%2Fpersonal%2Fchangell%5Fusc%5Fedu%2FDocuments%2FNeurobehavior%20Conference%2FADRC%20REC%20Training%20Core&FolderCTID=0x0120005B95EFCE83E1EC4585EE44F71B3E15D4',
   recordingsContactEmail: 'nikkhahb@usc.edu',
   recordingsContactName: 'Sahar Nikkhah Bahrami',
+  adrcWebsiteUrl: 'https://adrc.usc.edu/seminars/',
 };
 const META_KEY = 'adrc-rec-meta';
 const DEFAULT_YEAR = '2026-2027';
@@ -518,6 +519,7 @@ function renderTable() {
         <td class="recording-cell">${getRecordingCellHtml(e)}</td>
         <td class="actions-col">
           <div class="row-actions">
+            ${upcoming && !isOpen ? `<a class="btn-icon btn-flyer" href="marketing.html?year=${encodeURIComponent(currentYear)}&amp;id=${encodeURIComponent(e.id)}" title="Flyer &amp; LinkedIn">📣</a>` : ''}
             <button type="button" class="btn-icon btn-edit" title="Edit" data-id="${e.id}">✎</button>
             <button type="button" class="btn-icon btn-delete" title="Delete" data-id="${e.id}">🗑</button>
           </div>
@@ -571,6 +573,10 @@ function populateForm(entry) {
   document.getElementById('entry-affiliation').value = entry.affiliation || '';
   document.getElementById('entry-speaker-type').value = entry.speakerType || '';
   document.getElementById('entry-recording-url').value = entry.recordingUrl || '';
+  document.getElementById('entry-professional-title').value = entry.professionalTitle || '';
+  document.getElementById('entry-headshot-url').value = entry.headshotUrl || '';
+  document.getElementById('entry-meeting-link').value = entry.meetingLink || '';
+  document.getElementById('entry-meeting-time').value = entry.meetingTime || 'Fridays · 1:00–2:00 PM Pacific Time';
 
   const presetTypes = ['Invited Speaker', 'External Speaker', 'Career Development', 'Case Conference', 'National Webinar', 'Journal Club'];
   const talkSelect = document.getElementById('entry-talk-type');
@@ -607,6 +613,10 @@ function getFormEntry() {
   if (!speakerType) speakerType = inferred.speakerType;
 
   const recordingUrl = document.getElementById('entry-recording-url').value.trim();
+  const professionalTitle = document.getElementById('entry-professional-title').value.trim();
+  const headshotUrl = document.getElementById('entry-headshot-url').value.trim();
+  const meetingLink = document.getElementById('entry-meeting-link').value.trim();
+  const meetingTime = document.getElementById('entry-meeting-time').value.trim();
 
   return {
     id,
@@ -619,6 +629,10 @@ function getFormEntry() {
     speakerType,
     status: 'Booked',
     recordingUrl,
+    professionalTitle,
+    headshotUrl,
+    meetingLink,
+    meetingTime,
   };
 }
 

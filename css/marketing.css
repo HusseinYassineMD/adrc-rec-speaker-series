@@ -1,0 +1,360 @@
+.marketing-main { max-width: 1400px; }
+
+.workflow-banner {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.workflow-banner a {
+  color: var(--cardinal);
+  font-weight: 600;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.panel h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.panel-intro {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.marketing-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 380px) 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  align-items: start;
+}
+
+.marketing-controls .form-row { margin-bottom: 0.85rem; }
+
+.form-row-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 0.5rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-block:hover { background: #ececee; }
+
+.marketing-controls .btn-secondary {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* Flyer preview */
+.flyer-preview-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background: #ececee;
+  border-radius: 8px;
+}
+
+.flyer {
+  width: 100%;
+  max-width: 540px;
+  aspect-ratio: 1 / 1;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--font);
+}
+
+.flyer-header {
+  background: linear-gradient(135deg, var(--cardinal-dark) 0%, var(--cardinal) 60%, var(--cardinal-light) 100%);
+  color: white;
+  padding: 1.1rem 1.25rem 0.9rem;
+  text-align: center;
+  border-bottom: 4px solid var(--gold);
+}
+
+.flyer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.flyer-brand-mark {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.flyer-brand-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.92;
+  line-height: 1.3;
+  max-width: 18rem;
+}
+
+.flyer-series-label {
+  margin: 0.65rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.flyer-body {
+  flex: 1;
+  padding: 1rem 1.25rem 0.75rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flyer-headshot-wrap {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  margin-bottom: 0.65rem;
+  flex-shrink: 0;
+}
+
+.flyer-headshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flyer-headshot-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f4f5;
+  color: var(--text-muted);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.flyer-speaker-name {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--cardinal-dark);
+  line-height: 1.2;
+}
+
+.flyer-speaker-title {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.flyer-speaker-institution {
+  margin: 0.15rem 0 0.65rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.flyer-talk-block {
+  width: 100%;
+  background: #fafafa;
+  border-left: 3px solid var(--cardinal);
+  padding: 0.55rem 0.75rem;
+  margin-bottom: 0.65rem;
+  text-align: left;
+}
+
+.flyer-talk-label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.flyer-talk-title {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.flyer-meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  gap: 0.35rem;
+  text-align: left;
+  font-size: 0.78rem;
+}
+
+.flyer-meta li {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.flyer-meta-label {
+  font-weight: 700;
+  color: var(--cardinal);
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  padding-top: 0.1rem;
+}
+
+.flyer-link-text {
+  word-break: break-all;
+  color: var(--upcoming);
+  font-weight: 600;
+}
+
+.flyer-footer {
+  background: var(--cardinal-dark);
+  color: white;
+  padding: 0.65rem 1rem;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.flyer-footer p { margin: 0; }
+
+.flyer-footer span {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* LinkedIn workflow */
+.linkedin-section { margin-bottom: 1.5rem; }
+
+.linkedin-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.linkedin-date-chip {
+  background: #f4f4f5;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+}
+
+.linkedin-date-chip strong { color: var(--cardinal); }
+
+.linkedin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.linkedin-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fafafa;
+}
+
+.linkedin-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: var(--cardinal-dark);
+}
+
+.linkedin-card .post-when {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.linkedin-post-text {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  min-height: 140px;
+  margin-bottom: 0.75rem;
+}
+
+.linkedin-card .btn-copy {
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: white;
+  cursor: pointer;
+  color: var(--cardinal);
+}
+
+.linkedin-card .btn-copy:hover { background: #fef2f2; }
+
+.header-actions a.btn { text-decoration: none; display: inline-flex; align-items: center; }
+
+/* Print */
+@media print {
+  body * { visibility: hidden; }
+  .flyer, .flyer * { visibility: visible; }
+  .flyer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 1080px;
+    height: 1080px;
+    max-width: none;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+}
+
+@media (max-width: 960px) {
+  .marketing-layout { grid-template-columns: 1fr; }
+  .form-row-split { grid-template-columns: 1fr; }
+}

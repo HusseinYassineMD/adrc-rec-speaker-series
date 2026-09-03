@@ -21,6 +21,7 @@
           </div>
         </div>
         <div class="header-actions">
+          <a href="marketing.html" class="btn btn-secondary">Flyer &amp; LinkedIn</a>
           <button type="button" class="btn btn-secondary" id="btn-export-json" title="Download JSON backup">Export JSON</button>
           <button type="button" class="btn btn-secondary" id="btn-export-csv" title="Download CSV for current year">Export CSV</button>
           <button type="button" class="btn btn-primary" id="btn-add-entry">+ Add Entry</button>
@@ -173,6 +174,30 @@
           <p class="form-hint">Past talks without a direct link show an Archive button to the shared OneDrive folder.</p>
         </div>
 
+        <fieldset class="form-fieldset">
+          <legend class="form-legend">Marketing / flyer</legend>
+
+          <div class="form-row">
+            <label class="form-label" for="entry-professional-title">Professional title</label>
+            <input type="text" id="entry-professional-title" class="form-input" placeholder="Associate Professor of Neurology">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="entry-headshot-url">Headshot URL</label>
+            <input type="url" id="entry-headshot-url" class="form-input" placeholder="https://… photo link for flyer">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="entry-meeting-link">Zoom / registration link</label>
+            <input type="url" id="entry-meeting-link" class="form-input" placeholder="https://usc.zoom.us/j/…">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="entry-meeting-time">Meeting time</label>
+            <input type="text" id="entry-meeting-time" class="form-input" placeholder="Fridays · 1:00–2:00 PM Pacific Time">
+          </div>
+        </fieldset>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-danger hidden" id="btn-delete-entry">Delete</button>
           <div class="modal-footer-right">
@@ -186,6 +211,6 @@
 
   <div class="toast hidden" id="toast"></div>
 
-  <script src="js/app.js?v=8"></script>
+  <script src="js/app.js?v=9"></script>
 </body>
 </html>

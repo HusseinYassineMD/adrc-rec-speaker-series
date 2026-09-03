@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flyer &amp; LinkedIn · ADRC REC Speaker Series</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/marketing.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-content">
+        <div class="header-brand">
+          <div class="header-logo">ADRC</div>
+          <div>
+            <h1>Flyer &amp; LinkedIn</h1>
+            <p class="subtitle">USC ADRC REC Speaker Series · Marketing workflow</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <a href="index.html" class="btn btn-secondary">← Back to schedule</a>
+          <button type="button" class="btn btn-primary" id="btn-print-flyer">Print / Save flyer</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main marketing-main">
+      <div class="workflow-banner">
+        <strong>For Sahar:</strong> Before posting, confirm the <em>final talk title</em> and <em>speaker headshot</em> with
+        <strong id="marketing-contact-name">Aishwarya</strong> (<a id="marketing-contact-email" href="#">email</a>)
+        so announcements can go out on schedule.
+      </div>
+
+      <div class="marketing-layout">
+        <section class="marketing-controls panel">
+          <h2>Flyer details</h2>
+          <p class="panel-intro">Select an upcoming talk or fill in fields manually. Updates preview live.</p>
+
+          <div class="form-row">
+            <label class="form-label" for="select-talk">Upcoming talk</label>
+            <select id="select-talk" class="form-input"></select>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="flyer-headshot">Headshot URL</label>
+            <input type="url" id="flyer-headshot" class="form-input" placeholder="https://… (photo link)">
+            <p class="form-hint">Share headshot with Aishwarya if not yet on file.</p>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="flyer-name">Speaker name</label>
+            <input type="text" id="flyer-name" class="form-input" placeholder="Dr. Jane Smith">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="flyer-prof-title">Professional title</label>
+            <input type="text" id="flyer-prof-title" class="form-input" placeholder="Associate Professor of Neurology">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="flyer-institution">Institution</label>
+            <input type="text" id="flyer-institution" class="form-input" placeholder="USC Keck School of Medicine">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="flyer-talk-title">Talk title</label>
+            <textarea id="flyer-talk-title" class="form-input" rows="2" placeholder="Final talk title"></textarea>
+          </div>
+
+          <div class="form-row form-row-split">
+            <div>
+              <label class="form-label" for="flyer-date">Date</label>
+              <input type="date" id="flyer-date" class="form-input">
+            </div>
+            <div>
+              <label class="form-label" for="flyer-time">Time</label>
+              <input type="text" id="flyer-time" class="form-input" value="Fridays · 1:00–2:00 PM Pacific Time">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="flyer-link">Registration / Zoom link</label>
+            <input type="url" id="flyer-link" class="form-input" placeholder="https://usc.zoom.us/j/…">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="flyer-schedule-url">Complete schedule link</label>
+            <input type="url" id="flyer-schedule-url" class="form-input">
+          </div>
+
+          <button type="button" class="btn btn-secondary btn-block" id="btn-save-to-entry">Save marketing fields to schedule entry</button>
+        </section>
+
+        <section class="flyer-preview-panel panel">
+          <h2>Flyer preview</h2>
+          <p class="panel-intro">USC ADRC branded · optimized for LinkedIn (1080×1080)</p>
+          <div class="flyer-preview-wrap">
+            <article class="flyer" id="flyer" aria-label="Seminar flyer preview">
+              <header class="flyer-header">
+                <div class="flyer-brand">
+                  <span class="flyer-brand-mark">USC</span>
+                  <span class="flyer-brand-text">Alzheimer's Disease Research Center</span>
+                </div>
+                <p class="flyer-series-label">REC Speaker Series</p>
+              </header>
+
+              <div class="flyer-body">
+                <div class="flyer-headshot-wrap">
+                  <img id="flyer-headshot-img" class="flyer-headshot" alt="" hidden>
+                  <div id="flyer-headshot-placeholder" class="flyer-headshot-placeholder">?</div>
+                </div>
+                <h3 class="flyer-speaker-name" id="flyer-preview-name">Speaker Name</h3>
+                <p class="flyer-speaker-title" id="flyer-preview-prof-title">Professional title</p>
+                <p class="flyer-speaker-institution" id="flyer-preview-institution">Institution</p>
+                <div class="flyer-talk-block">
+                  <span class="flyer-talk-label">Presentation</span>
+                  <p class="flyer-talk-title" id="flyer-preview-talk-title">Talk title</p>
+                </div>
+                <ul class="flyer-meta">
+                  <li><span class="flyer-meta-label">Date</span><span id="flyer-preview-date">—</span></li>
+                  <li><span class="flyer-meta-label">Time</span><span id="flyer-preview-time">—</span></li>
+                  <li><span class="flyer-meta-label">Join</span><span id="flyer-preview-link" class="flyer-link-text">—</span></li>
+                </ul>
+              </div>
+
+              <footer class="flyer-footer">
+                <p>For our complete REC series schedule, visit
+                  <span id="flyer-preview-schedule-link">adrc.usc.edu/seminars</span>
+                </p>
+              </footer>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <section class="linkedin-section panel">
+        <h2>LinkedIn announcement workflow</h2>
+        <p class="panel-intro">Post on these dates relative to the seminar. Copy text, attach the printed flyer image, and publish on LinkedIn.</p>
+
+        <div class="linkedin-dates" id="linkedin-dates"></div>
+
+        <div class="linkedin-cards" id="linkedin-cards"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Save marketing fields back to the schedule entry so headshots and links persist. Export JSON from the dashboard to share updates with the maintainer.</p>
+    </footer>
+  </div>
+
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="js/marketing.js?v=1"></script>
+</body>
+</html>
