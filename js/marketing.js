@@ -390,16 +390,6 @@ function saveToEntry() {
   showToast('Saved to schedule entry (local)');
 }
 
-function setupContactBanner() {
-  document.getElementById('marketing-contact-name').textContent = CONFIG.marketingContactName;
-  const emailEl = document.getElementById('marketing-contact-email');
-  const email = CONFIG.marketingContactEmail || CONFIG.coordinatorEmail;
-  emailEl.textContent = email;
-  emailEl.href = `mailto:${email}?subject=${encodeURIComponent('REC seminar flyer — final title & headshot')}&body=${encodeURIComponent(
-    `Hi ${CONFIG.marketingContactName},\n\nPlease find the final talk title and headshot for the upcoming REC seminar:\n\nSpeaker:\nDate:\nTalk title:\nHeadshot link:\n\nThank you!`
-  )}`;
-}
-
 function bindEvents() {
   document.getElementById('select-talk').addEventListener('change', e => {
     if (!e.target.value) return;
@@ -422,7 +412,6 @@ function bindEvents() {
 
 async function init() {
   try {
-    setupContactBanner();
     await loadData();
     bindEvents();
     populateTalkSelect();

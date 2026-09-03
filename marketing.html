@@ -12,29 +12,28 @@
 </head>
 <body>
   <div class="app">
-    <header class="header">
+    <header class="header header-marketing">
+      <div class="header-marketing-bg" aria-hidden="true"></div>
       <div class="header-content">
         <div class="header-brand">
-          <div class="header-logo">ADRC</div>
-          <div>
+          <div class="header-logo header-logo-marketing">
+            <span class="logo-top">USC</span>
+            <span class="logo-bottom">ADRC</span>
+          </div>
+          <div class="header-titles">
+            <p class="header-eyebrow">REC Speaker Series</p>
             <h1>Flyer &amp; LinkedIn</h1>
-            <p class="subtitle">USC ADRC REC Speaker Series · Marketing workflow</p>
+            <p class="subtitle">Branded seminar flyers · Social announcement templates</p>
           </div>
         </div>
         <div class="header-actions">
-          <a href="index.html" class="btn btn-secondary" id="nav-schedule">← Back to schedule</a>
-          <button type="button" class="btn btn-primary" id="btn-print-flyer">Print / Save flyer</button>
+          <a href="index.html" class="btn btn-ghost" id="nav-schedule">← Schedule</a>
+          <button type="button" class="btn btn-primary btn-glow" id="btn-print-flyer">Print / Save flyer</button>
         </div>
       </div>
     </header>
 
     <main class="main marketing-main">
-      <div class="workflow-banner">
-        <strong>For Sahar:</strong> Before posting, confirm the <em>final talk title</em> and <em>speaker headshot</em> with
-        <strong id="marketing-contact-name">Aishwarya</strong> (<a id="marketing-contact-email" href="#">email</a>)
-        so announcements can go out on schedule.
-      </div>
-
       <div class="marketing-layout">
         <section class="marketing-controls panel">
           <h2>Flyer details</h2>
@@ -48,7 +47,6 @@
           <div class="form-row">
             <label class="form-label" for="flyer-headshot">Headshot URL</label>
             <input type="url" id="flyer-headshot" class="form-input" placeholder="https://… (photo link)">
-            <p class="form-hint">Share headshot with Aishwarya if not yet on file.</p>
           </div>
 
           <div class="form-row">
@@ -155,6 +153,6 @@
   <div class="toast hidden" id="toast"></div>
 
   <script src="js/data-loader.js?v=1"></script>
-  <script src="js/marketing.js?v=4"></script>
+  <script src="js/marketing.js?v=5"></script>
 </body>
 </html>

@@ -1,19 +1,107 @@
 .marketing-main { max-width: 1400px; }
 
-.workflow-banner {
-  background: #fffbeb;
-  border: 1px solid #fde68a;
-  border-left: 4px solid var(--gold);
-  border-radius: 8px;
-  padding: 0.9rem 1rem;
-  margin-bottom: 1.25rem;
-  font-size: 0.92rem;
-  line-height: 1.55;
+/* Marketing header */
+.header-marketing {
+  position: relative;
+  overflow: hidden;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-bottom: 3px solid var(--gold);
+  background: linear-gradient(125deg, #5c0000 0%, var(--cardinal-dark) 25%, var(--cardinal) 55%, #a61a1a 100%);
 }
 
-.workflow-banner a {
-  color: var(--cardinal);
-  font-weight: 600;
+.header-marketing-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 120% at 100% -20%, rgba(255, 204, 0, 0.18), transparent 55%),
+    radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.08), transparent 45%);
+  pointer-events: none;
+}
+
+.header-marketing .header-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+}
+
+.header-marketing .header-brand {
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.header-logo-marketing {
+  width: 58px;
+  height: 58px;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 204, 0, 0.85);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.header-logo-marketing .logo-top {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.header-logo-marketing .logo-bottom {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  color: white;
+}
+
+.header-titles { min-width: 0; }
+
+.header-eyebrow {
+  margin: 0 0 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.header-marketing h1 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.header-marketing .subtitle {
+  margin-top: 0.35rem;
+  font-size: 0.92rem;
+  opacity: 0.9;
+  max-width: 28rem;
+}
+
+.header-marketing .btn-ghost {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(6px);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-marketing .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.header-marketing .btn-glow {
+  box-shadow: 0 4px 14px rgba(255, 204, 0, 0.35);
+}
+
+.header-marketing .btn-glow:hover {
+  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.45);
 }
 
 .panel {
