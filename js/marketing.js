@@ -7,7 +7,6 @@ const DATA_VERSION = '2026-09-02-v12';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
-  adrcWebsiteUrl: 'https://adrc.usc.edu/seminars/',
   scheduleDashboardUrl: 'https://husseinyassinemd.github.io/adrc-rec-speaker-series/',
   defaultMeetingTime: 'Fridays · 1:00–2:00 PM Pacific Time',
   marketingContactName: 'Aishwarya',
@@ -29,7 +28,6 @@ const fields = [
   'flyer-date',
   'flyer-time',
   'flyer-link',
-  'flyer-schedule-url',
 ];
 
 function parseDate(str) {
@@ -194,7 +192,6 @@ function loadEntry(year, id) {
   document.getElementById('flyer-date').value = entry.date || '';
   document.getElementById('flyer-time').value = entry.meetingTime || CONFIG.defaultMeetingTime;
   document.getElementById('flyer-link').value = entry.meetingLink || '';
-  document.getElementById('flyer-schedule-url').value = CONFIG.adrcWebsiteUrl;
 
   updatePreview();
   renderLinkedIn();
@@ -210,7 +207,6 @@ function readForm() {
     date: document.getElementById('flyer-date').value,
     time: document.getElementById('flyer-time').value.trim() || CONFIG.defaultMeetingTime,
     meetingLink: document.getElementById('flyer-link').value.trim(),
-    scheduleUrl: document.getElementById('flyer-schedule-url').value.trim() || CONFIG.adrcWebsiteUrl,
   };
 }
 
@@ -222,7 +218,6 @@ function updatePreview() {
   const talkTitle = f.talkTitle || 'Talk title';
   const dateLabel = f.date ? formatDateLong(f.date) : '—';
   const linkLabel = f.meetingLink || 'Link coming soon';
-  const scheduleDisplay = f.scheduleUrl.replace(/^https?:\/\//, '');
 
   document.getElementById('flyer-preview-name').textContent = name;
   document.getElementById('flyer-preview-prof-title').textContent = profTitle;
@@ -231,7 +226,6 @@ function updatePreview() {
   document.getElementById('flyer-preview-date').textContent = dateLabel;
   document.getElementById('flyer-preview-time').textContent = f.time;
   document.getElementById('flyer-preview-link').textContent = linkLabel;
-  document.getElementById('flyer-preview-schedule-link').textContent = scheduleDisplay;
 
   const img = document.getElementById('flyer-headshot-img');
   const placeholder = document.getElementById('flyer-headshot-placeholder');
@@ -264,7 +258,6 @@ function buildLinkedInPost(variant) {
   const shortDate = f.date ? formatDateShort(f.date) : '[Date]';
   const time = f.time;
   const link = f.meetingLink || '[Registration link]';
-  const schedule = f.scheduleUrl || CONFIG.adrcWebsiteUrl;
 
   const baseHashtags = '#USCADRC #AlzheimersResearch #Neuroscience #Seminar';
 
@@ -276,8 +269,6 @@ Join us on ${date} (${time}) for a seminar with ${name}, ${profTitle}, ${institu
 "${title}"
 
 Register: ${link}
-
-For our complete REC series schedule: ${schedule}
 
 ${baseHashtags}`;
   }
@@ -292,8 +283,6 @@ ${name} (${institution}) presents:
 
 Register: ${link}
 
-Full schedule: ${schedule}
-
 ${baseHashtags}`;
   }
 
@@ -305,8 +294,6 @@ ${name}, ${profTitle}, ${institution}
 📆 ${date}
 🕐 ${time}
 🔗 ${link}
-
-See the full REC schedule: ${schedule}
 
 ${baseHashtags}`;
 }
@@ -406,8 +393,6 @@ function bindEvents() {
 
   document.getElementById('btn-save-to-entry').addEventListener('click', saveToEntry);
   document.getElementById('btn-print-flyer').addEventListener('click', () => window.print());
-
-  document.getElementById('flyer-schedule-url').value = CONFIG.adrcWebsiteUrl;
 }
 
 async function init() {
