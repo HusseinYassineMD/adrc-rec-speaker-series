@@ -210,6 +210,22 @@ function readForm() {
   };
 }
 
+function getSeasonLabel(dateStr) {
+  const d = parseDate(dateStr);
+  if (!d) return 'REC SERIES';
+  const month = d.getMonth();
+  const year = d.getFullYear();
+  let season = 'SPRING';
+  if (month >= 8) season = 'FALL';
+  else if (month >= 5) season = 'SUMMER';
+  return `${season} ${year}`;
+}
+
+function formatShortUrl(url) {
+  if (!url) return 'adrc.usc.edu';
+  return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+}
+
 function updatePreview() {
   const f = readForm();
   const name = f.name || 'Speaker Name';
@@ -218,17 +234,29 @@ function updatePreview() {
   const talkTitle = f.talkTitle || 'Talk title';
   const dateLabel = f.date ? formatDateLong(f.date) : '—';
   const linkLabel = f.meetingLink || 'Link coming soon';
+  const seasonLabel = getSeasonLabel(f.date);
+  const [seasonName, seasonYear] = seasonLabel.split(' ');
+  const quotedTitle = talkTitle.startsWith('"') ? talkTitle : `"${talkTitle}"`;
 
+  document.getElementById('flyer-preview-season').textContent = seasonLabel;
+  document.getElementById('flyer-preview-lead').textContent =
+    seasonYear
+      ? `You're invited to the ${seasonName.toLowerCase()} ${seasonYear} ADRC REC Speaker Series seminar.`
+      : "You're invited to the ADRC REC Speaker Series seminar.";
   document.getElementById('flyer-preview-name').textContent = name;
   document.getElementById('flyer-preview-prof-title').textContent = profTitle;
   document.getElementById('flyer-preview-institution').textContent = institution;
-  document.getElementById('flyer-preview-talk-title').textContent = talkTitle;
+  document.getElementById('flyer-preview-talk-title').textContent = quotedTitle;
   document.getElementById('flyer-preview-date').textContent = dateLabel;
   document.getElementById('flyer-preview-time').textContent = f.time;
   document.getElementById('flyer-preview-link').textContent = linkLabel;
+  document.getElementById('flyer-preview-footer-link').textContent = formatShortUrl(f.meetingLink);
+  document.getElementById('flyer-preview-cta').textContent =
+    f.meetingLink ? 'Register for this seminar' : 'Registration link coming soon';
 
   const img = document.getElementById('flyer-headshot-img');
   const placeholder = document.getElementById('flyer-headshot-placeholder');
+  const initialsEl = placeholder.querySelector('.flyer-hero-initials');
 
   if (f.headshotUrl) {
     img.src = f.headshotUrl;
@@ -238,13 +266,13 @@ function updatePreview() {
     img.onerror = () => {
       img.hidden = true;
       placeholder.hidden = false;
-      placeholder.textContent = getInitials(name);
+      if (initialsEl) initialsEl.textContent = getInitials(name);
     };
   } else {
     img.hidden = true;
     img.removeAttribute('src');
     placeholder.hidden = false;
-    placeholder.textContent = getInitials(name);
+    if (initialsEl) initialsEl.textContent = getInitials(name);
   }
 }
 

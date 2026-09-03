@@ -140,202 +140,260 @@
   border: 1px solid var(--border);
 }
 
-/* Flyer preview */
+/* Flyer preview — CPBH newsletter style */
 .flyer-preview-wrap {
   display: flex;
   justify-content: center;
-  padding: 1rem;
-  background: #ececee;
+  padding: 1.25rem;
+  background: #e8e8ea;
   border-radius: 8px;
 }
 
-.flyer {
+.flyer-newsletter {
+  --flyer-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  position: relative;
   width: 100%;
-  max-width: 540px;
-  aspect-ratio: 1 / 1;
-  background: white;
-  border-radius: 4px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  max-width: 520px;
+  aspect-ratio: 8.5 / 11;
+  background: #fff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.14);
+  font-family: var(--font);
+  color: #1a1a1a;
+  overflow: hidden;
+}
+
+.flyer-sidebar {
+  position: absolute;
+  left: 0;
+  top: 2.4rem;
+  bottom: 0;
+  width: 7px;
+  background: var(--cardinal);
+  z-index: 2;
+}
+
+.flyer-page {
+  position: relative;
+  height: 100%;
+  padding: 1.1rem 1.35rem 0.85rem 1.5rem;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  font-family: var(--font);
 }
 
-.flyer-header {
-  background: linear-gradient(135deg, var(--cardinal-dark) 0%, var(--cardinal) 60%, var(--cardinal-light) 100%);
-  color: white;
-  padding: 1.1rem 1.25rem 0.9rem;
-  text-align: center;
-  border-bottom: 4px solid var(--gold);
-}
-
-.flyer-brand {
+.flyer-topbar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.flyer-brand-svg {
-  display: block;
-  width: 3.25rem;
-  height: 3.25rem;
-}
-
-.flyer-brand-text {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  opacity: 0.92;
-  line-height: 1.35;
-  max-width: 16rem;
-  text-align: center;
-}
-
-.flyer-series-label {
-  margin: 0.65rem 0 0;
-  font-size: 0.95rem;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--gold);
 }
 
-.flyer-body {
-  flex: 1;
-  padding: 1rem 1.25rem 0.75rem;
+.flyer-season {
+  color: #c9920a;
+}
+
+.flyer-topbar-title {
+  color: var(--text);
+  text-align: right;
+}
+
+.flyer-rule {
+  height: 2px;
+  background: var(--gold);
+  margin: 0.45rem 0 0.55rem;
+}
+
+.flyer-keck {
+  margin: 0 0 0.65rem;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-family: var(--flyer-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--cardinal);
 }
 
-.flyer-headshot-wrap {
-  width: 108px;
-  height: 108px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--gold);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+.flyer-wordmark {
+  text-align: center;
   margin-bottom: 0.65rem;
-  flex-shrink: 0;
 }
 
-.flyer-headshot {
+.flyer-wordmark-line {
+  display: block;
+  line-height: 1.15;
+}
+
+.flyer-wordmark-usc {
+  font-family: var(--flyer-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--cardinal);
+  margin-right: 0.2rem;
+}
+
+.flyer-wordmark-rest {
+  font-family: var(--flyer-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.flyer-wordmark-sub {
+  display: block;
+  font-family: var(--flyer-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 0.1rem;
+}
+
+.flyer-hero {
+  position: relative;
+  width: 100%;
+  height: 34%;
+  min-height: 120px;
+  max-height: 200px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e3a5f 0%, #4a1942 45%, #990000 100%);
+}
+
+.flyer-hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
+  display: block;
 }
 
-.flyer-headshot-placeholder {
+.flyer-hero-placeholder {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f4f4f5;
-  color: var(--text-muted);
-  font-size: 2rem;
-  font-weight: 700;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(255, 204, 0, 0.25), transparent 45%),
+    linear-gradient(135deg, #2a4070 0%, #6b1d1d 55%, #990000 100%);
 }
 
-.flyer-speaker-name {
-  margin: 0;
-  font-size: 1.35rem;
+.flyer-hero-initials {
+  font-size: 2.5rem;
   font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.05em;
+}
+
+.flyer-content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.flyer-headline {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.flyer-lead {
+  margin: 0 0 0.55rem;
+  font-size: 0.72rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: #333;
+}
+
+.flyer-body {
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.flyer-talk-emphasis {
+  margin: 0 0 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.45;
   color: var(--cardinal-dark);
-  line-height: 1.2;
 }
 
-.flyer-speaker-title {
-  margin: 0.25rem 0 0;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text);
+.flyer-details {
+  font-size: 0.72rem;
+  line-height: 1.55;
 }
 
-.flyer-speaker-institution {
-  margin: 0.15rem 0 0.65rem;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-.flyer-talk-block {
-  width: 100%;
-  background: #fafafa;
-  border-left: 3px solid var(--cardinal);
-  padding: 0.55rem 0.75rem;
-  margin-bottom: 0.65rem;
-  text-align: left;
-}
-
-.flyer-talk-label {
-  display: block;
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  margin-bottom: 0.2rem;
-}
-
-.flyer-talk-title {
-  margin: 0;
-  font-size: 0.88rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--text);
-}
-
-.flyer-meta {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  display: grid;
-  gap: 0.35rem;
-  text-align: left;
-  font-size: 0.78rem;
-}
-
-.flyer-meta li {
-  display: grid;
-  grid-template-columns: 3.5rem 1fr;
-  gap: 0.5rem;
-  align-items: start;
-}
-
-.flyer-meta-label {
-  font-weight: 700;
-  color: var(--cardinal);
-  text-transform: uppercase;
-  font-size: 0.65rem;
-  letter-spacing: 0.04em;
-  padding-top: 0.1rem;
-}
+.flyer-details p { margin: 0 0 0.2rem; }
 
 .flyer-link-text {
   word-break: break-all;
-  color: var(--upcoming);
+  color: var(--cardinal);
   font-weight: 600;
 }
 
-.flyer-footer {
-  background: var(--cardinal-dark);
-  color: white;
-  padding: 0.65rem 1rem;
-  text-align: center;
-  font-size: 0.72rem;
-  line-height: 1.45;
+.flyer-doc-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.45rem;
+  font-size: 0.62rem;
 }
 
-.flyer-footer p { margin: 0; }
-
-.flyer-footer span {
-  color: var(--gold);
+.flyer-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-weight: 700;
+  color: var(--cardinal);
+}
+
+.flyer-footer-mark {
+  width: 1.65rem;
+  height: 1.65rem;
+  flex-shrink: 0;
+}
+
+.flyer-footer-cta {
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+  color: var(--cardinal);
+  font-size: 0.68rem;
+}
+
+.flyer-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.flyer-footer-url {
+  color: #666;
+  font-style: italic;
+  word-break: break-all;
+  text-align: right;
+  max-width: 7rem;
+}
+
+.flyer-page-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  background: var(--gold);
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 0.62rem;
+  flex-shrink: 0;
 }
 
 /* LinkedIn workflow */
@@ -415,14 +473,15 @@
 /* Print */
 @media print {
   body * { visibility: hidden; }
-  .flyer, .flyer * { visibility: visible; }
-  .flyer {
+  .flyer-newsletter, .flyer-newsletter * { visibility: visible; }
+  .flyer-newsletter {
     position: fixed;
     left: 0;
     top: 0;
-    width: 1080px;
-    height: 1080px;
+    width: 8.5in;
+    height: 11in;
     max-width: none;
+    aspect-ratio: auto;
     box-shadow: none;
     page-break-inside: avoid;
   }
