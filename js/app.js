@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v10';
+const DATA_VERSION = '2026-09-02-v11';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
@@ -12,6 +12,7 @@ const CONFIG = {
   recordingsContactEmail: 'nikkhahb@usc.edu',
   recordingsContactName: 'Sahar Nikkhah Bahrami',
   adrcWebsiteUrl: 'https://adrc.usc.edu/seminars/',
+  liveSiteUrl: 'https://husseinyassinemd.github.io/adrc-rec-speaker-series/',
 };
 const META_KEY = 'adrc-rec-meta';
 const DEFAULT_YEAR = '2026-2027';
@@ -50,7 +51,7 @@ async function loadData() {
     }
   }
 
-  const res = await fetch(`${window.APP_BASE || './'}data/speakers.json`);
+  const res = await fetch('data/speakers.json');
   if (!res.ok) throw new Error('Could not load speakers.json');
   const loaded = await res.json();
   extractMetaFromPayload(loaded);
@@ -311,9 +312,31 @@ function enrichEntry(entry) {
 
 function enrichAllData() {
   Object.keys(data).forEach(year => {
-    if (year === '_meta') return;
+    if (year === '_meta' || !data[year]?.entries) return;
     data[year].entries = data[year].entries.map(e => enrichEntry({ ...e }));
   });
+}
+
+function assertValidEnvironment() {
+  if (location.protocol === 'file:') {
+    throw new Error(
+      'Open the live dashboard or run a local server — do not open the HTML file directly from your computer.'
+    );
+  }
+}
+
+function showFatalError(message) {
+  const main = document.querySelector('.main');
+  if (!main) return;
+  main.innerHTML = `
+    <div class="empty-state">
+      <p><strong>Dashboard could not load.</strong></p>
+      <p>${escapeHtml(message)}</p>
+      <p>Open the live site:<br>
+        <a href="${CONFIG.liveSiteUrl}">${CONFIG.liveSiteUrl}</a>
+      </p>
+      <p>Or run locally:<br><code>python3 -m http.server 8080</code></p>
+    </div>`;
 }
 
 function escapeHtml(str) {
@@ -353,7 +376,7 @@ function getRecordingCellHtml(entry) {
 function getAllTalkTypes() {
   const types = new Set();
   Object.values(data).forEach(year => {
-    year.entries.forEach(e => {
+    (year?.entries || []).forEach(e => {
       if (e.talkType) types.add(e.talkType);
     });
   });
@@ -519,7 +542,7 @@ function renderTable() {
         <td class="recording-cell">${getRecordingCellHtml(e)}</td>
         <td class="actions-col">
           <div class="row-actions">
-            ${upcoming && !isOpen ? `<a class="btn-icon btn-flyer" href="${window.APP_BASE || ''}marketing.html?year=${encodeURIComponent(currentYear)}&amp;id=${encodeURIComponent(e.id)}" title="Flyer &amp; LinkedIn">📣</a>` : ''}
+            ${upcoming && !isOpen ? `<a class="btn-icon btn-flyer" href="marketing.html?year=${encodeURIComponent(currentYear)}&amp;id=${encodeURIComponent(e.id)}" title="Flyer &amp; LinkedIn">📣</a>` : ''}
             <button type="button" class="btn-icon btn-edit" title="Edit" data-id="${e.id}">✎</button>
             <button type="button" class="btn-icon btn-delete" title="Delete" data-id="${e.id}">🗑</button>
           </div>
@@ -537,11 +560,16 @@ function renderTable() {
 }
 
 function render() {
-  renderLastUpdated();
-  renderYearTabs();
-  renderStats();
-  renderTypeFilter();
-  renderTable();
+  try {
+    renderLastUpdated();
+    renderYearTabs();
+    renderStats();
+    renderTypeFilter();
+    renderTable();
+  } catch (err) {
+    console.error(err);
+    showFatalError(err.message || 'Unexpected error while rendering the schedule.');
+  }
 }
 
 // ── Modal ───────────────────────────────────────────────────
@@ -746,6 +774,7 @@ function bindEvents() {
 
 async function init() {
   try {
+    assertValidEnvironment();
     await loadData();
     cleanData();
     enrichAllData();
@@ -753,9 +782,8 @@ async function init() {
     bindEvents();
     render();
   } catch (err) {
-    document.querySelector('.main').innerHTML =
-      `<div class="empty-state"><p>Failed to load data: ${err.message}</p>
-       <p>Run a local server: <code>python3 -m http.server 8080</code></p></div>`;
+    console.error(err);
+    showFatalError(err.message || 'Could not load speaker data.');
   }
 }
 

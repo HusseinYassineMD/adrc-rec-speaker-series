@@ -3,7 +3,7 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v10';
+const DATA_VERSION = '2026-09-02-v11';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
@@ -123,7 +123,7 @@ async function loadData() {
     }
   }
 
-  const res = await fetch(`${window.APP_BASE || './'}data/speakers.json`);
+  const res = await fetch('data/speakers.json');
   if (!res.ok) throw new Error('Could not load speakers.json');
   data = await res.json();
   if (data._meta) delete data._meta;
@@ -414,8 +414,28 @@ function bindEvents() {
   document.getElementById('flyer-schedule-url').value = CONFIG.adrcWebsiteUrl;
 }
 
+function assertValidEnvironment() {
+  if (location.protocol === 'file:') {
+    throw new Error(
+      'Open the live site or run a local server — do not open the HTML file directly from your computer.'
+    );
+  }
+}
+
+function showFatalError(message) {
+  const main = document.querySelector('.marketing-main');
+  if (!main) return;
+  main.innerHTML = `
+    <div class="panel">
+      <p><strong>Flyer page could not load.</strong></p>
+      <p>${escapeHtml(message)}</p>
+      <p><a href="https://husseinyassinemd.github.io/adrc-rec-speaker-series/marketing.html">Open live flyer page</a></p>
+    </div>`;
+}
+
 async function init() {
   try {
+    assertValidEnvironment();
     setupContactBanner();
     await loadData();
     bindEvents();
@@ -425,8 +445,8 @@ async function init() {
       renderLinkedIn();
     }
   } catch (err) {
-    document.querySelector('.marketing-main').innerHTML =
-      `<div class="panel"><p>Failed to load: ${escapeHtml(err.message)}</p></div>`;
+    console.error(err);
+    showFatalError(err.message || 'Could not load speaker data.');
   }
 }
 
