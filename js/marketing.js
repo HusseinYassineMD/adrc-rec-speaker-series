@@ -8,8 +8,7 @@ const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
   scheduleDashboardUrl: 'https://husseinyassinemd.github.io/adrc-rec-speaker-series/',
-  defaultMeetingTime: 'Fridays · 1:00–2:00 PM Pacific Time',
-  defaultHeroImage: 'assets/flyer-hero-default.jpg',
+  defaultMeetingTime: '1:00 P.M. – 2:00 P.M. PST',
   marketingContactName: 'Aishwarya',
   marketingContactEmail: '',
   coordinatorName: 'Sahar Nikkhah Bahrami',
@@ -19,13 +18,14 @@ const CONFIG = {
 let data = {};
 let selectedYear = null;
 let selectedId = null;
+let uploadedHeadshotDataUrl = null;
 
 const fields = [
-  'flyer-headshot',
   'flyer-name',
   'flyer-prof-title',
   'flyer-institution',
   'flyer-talk-title',
+  'flyer-bio',
   'flyer-date',
   'flyer-time',
   'flyer-link',
@@ -46,6 +46,28 @@ function formatDateLong(str) {
     day: 'numeric',
     year: 'numeric',
   });
+}
+
+function formatEventLine(str) {
+  const d = parseDate(str);
+  if (!d) return 'Date TBD, ADRC REC Zoom Seminar';
+  const label = d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+  return `${label}, ADRC REC Zoom Seminar`;
+}
+
+function renderTitleLines(text) {
+  const lines = (text || '')
+    .split(/\n/)
+    .map(line => line.trim())
+    .filter(Boolean);
+  if (!lines.length) {
+    return '<p>Professional title</p>';
+  }
+  return lines.map(line => `<p>${escapeHtml(line)}</p>`).join('');
 }
 
 function formatDateShort(str) {
@@ -152,6 +174,55 @@ function getUpcomingEntries() {
   return items;
 }
 
+function clearUploadedHeadshot() {
+  uploadedHeadshotDataUrl = null;
+  const fileInput = document.getElementById('flyer-headshot-file');
+  if (fileInput) fileInput.value = '';
+}
+
+function getHeadshotSource() {
+  if (uploadedHeadshotDataUrl) return uploadedHeadshotDataUrl;
+  return document.getElementById('flyer-headshot').value.trim();
+}
+
+function setHeadshotFieldsFromEntry(url) {
+  clearUploadedHeadshot();
+  const value = url || '';
+  if (value.startsWith('data:')) {
+    uploadedHeadshotDataUrl = value;
+    document.getElementById('flyer-headshot').value = '';
+  } else {
+    document.getElementById('flyer-headshot').value = value;
+  }
+}
+
+function handleHeadshotFileChange(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+
+  if (!file.type.startsWith('image/')) {
+    showToast('Please choose an image file');
+    event.target.value = '';
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    showToast('Image must be under 5 MB');
+    event.target.value = '';
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    uploadedHeadshotDataUrl = reader.result;
+    document.getElementById('flyer-headshot').value = '';
+    updatePreview();
+    renderLinkedIn();
+  };
+  reader.onerror = () => showToast('Could not read that image');
+  reader.readAsDataURL(file);
+}
+
 function populateTalkSelect() {
   const select = document.getElementById('select-talk');
   const items = getUpcomingEntries();
@@ -185,11 +256,12 @@ function loadEntry(year, id) {
   const entry = (data[year]?.entries || []).find(e => e.id === id);
   if (!entry) return;
 
-  document.getElementById('flyer-headshot').value = entry.headshotUrl || '';
+  setHeadshotFieldsFromEntry(entry.headshotUrl || '');
   document.getElementById('flyer-name').value = formatDisplayName(entry.name || '');
   document.getElementById('flyer-prof-title').value = entry.professionalTitle || '';
   document.getElementById('flyer-institution').value = entry.affiliation || '';
   document.getElementById('flyer-talk-title').value = cleanTalkTitle(entry.title);
+  document.getElementById('flyer-bio').value = entry.flyerBio || '';
   document.getElementById('flyer-date').value = entry.date || '';
   document.getElementById('flyer-time').value = entry.meetingTime || CONFIG.defaultMeetingTime;
   document.getElementById('flyer-link').value = entry.meetingLink || '';
@@ -200,78 +272,56 @@ function loadEntry(year, id) {
 
 function readForm() {
   return {
-    headshotUrl: document.getElementById('flyer-headshot').value.trim(),
+    headshotUrl: getHeadshotSource(),
     name: document.getElementById('flyer-name').value.trim(),
     professionalTitle: document.getElementById('flyer-prof-title').value.trim(),
     institution: document.getElementById('flyer-institution').value.trim(),
     talkTitle: document.getElementById('flyer-talk-title').value.trim(),
+    bio: document.getElementById('flyer-bio').value.trim(),
     date: document.getElementById('flyer-date').value,
     time: document.getElementById('flyer-time').value.trim() || CONFIG.defaultMeetingTime,
     meetingLink: document.getElementById('flyer-link').value.trim(),
   };
 }
 
-function getSeasonLabel(dateStr) {
-  const d = parseDate(dateStr);
-  if (!d) return 'REC SERIES';
-  const month = d.getMonth();
-  const year = d.getFullYear();
-  let season = 'SPRING';
-  if (month >= 8) season = 'FALL';
-  else if (month >= 5) season = 'SUMMER';
-  return `${season} ${year}`;
-}
-
-function formatShortUrl(url) {
-  if (!url) return 'adrc.usc.edu';
-  return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
-}
-
 function updatePreview() {
   const f = readForm();
-  const name = f.name || 'Speaker Name';
-  const profTitle = f.professionalTitle || 'Professional title';
-  const institution = f.institution || 'Institution';
+  const name = f.name || 'Speaker Name, MD';
   const talkTitle = f.talkTitle || 'Talk title';
-  const dateLabel = f.date ? formatDateLong(f.date) : '—';
-  const linkLabel = f.meetingLink || 'Link coming soon';
-  const seasonLabel = getSeasonLabel(f.date);
-  const [seasonName, seasonYear] = seasonLabel.split(' ');
-  const quotedTitle = talkTitle.startsWith('"') ? talkTitle : `"${talkTitle}"`;
+  const dateLabel = f.date ? formatDateLong(f.date) : 'Date TBD';
+  const eventLine = formatEventLine(f.date);
+  const bioText = f.bio || 'Speaker bio and seminar description.';
 
-  document.getElementById('flyer-preview-season').textContent = seasonLabel;
-  document.getElementById('flyer-preview-lead').textContent =
-    seasonYear
-      ? `You're invited to the ${seasonName.toLowerCase()} ${seasonYear} ADRC REC Speaker Series seminar.`
-      : "You're invited to the ADRC REC Speaker Series seminar.";
+  document.getElementById('flyer-preview-event-line').textContent = eventLine;
+  document.getElementById('flyer-preview-talk-title').textContent = talkTitle;
   document.getElementById('flyer-preview-name').textContent = name;
-  document.getElementById('flyer-preview-prof-title').textContent = profTitle;
-  document.getElementById('flyer-preview-institution').textContent = institution;
-  document.getElementById('flyer-preview-talk-title').textContent = quotedTitle;
+  document.getElementById('flyer-preview-titles').innerHTML = renderTitleLines(f.professionalTitle);
   document.getElementById('flyer-preview-date').textContent = dateLabel;
   document.getElementById('flyer-preview-time').textContent = f.time;
-  document.getElementById('flyer-preview-link').textContent = linkLabel;
-  document.getElementById('flyer-preview-footer-link').textContent = formatShortUrl(f.meetingLink);
-  document.getElementById('flyer-preview-cta').textContent =
-    f.meetingLink ? 'Register for this seminar' : 'Registration link coming soon';
+  document.getElementById('flyer-preview-link').textContent = 'Zoom Meeting Link';
+  document.getElementById('flyer-preview-bio').textContent = bioText;
 
-  const defaultHero = document.getElementById('flyer-hero-default');
   const speakerImg = document.getElementById('flyer-headshot-img');
-
-  defaultHero.src = CONFIG.defaultHeroImage;
-  defaultHero.hidden = false;
+  const placeholder = document.getElementById('flyer-headshot-placeholder');
 
   if (f.headshotUrl) {
-    speakerImg.crossOrigin = 'anonymous';
+    if (f.headshotUrl.startsWith('data:')) {
+      speakerImg.removeAttribute('crossOrigin');
+    } else {
+      speakerImg.crossOrigin = 'anonymous';
+    }
     speakerImg.src = f.headshotUrl;
     speakerImg.alt = name;
     speakerImg.hidden = false;
+    placeholder.hidden = true;
     speakerImg.onerror = () => {
       speakerImg.hidden = true;
+      placeholder.hidden = false;
     };
   } else {
     speakerImg.hidden = true;
     speakerImg.removeAttribute('src');
+    placeholder.hidden = false;
   }
 }
 
@@ -396,6 +446,7 @@ function saveToEntry() {
   entry.professionalTitle = f.professionalTitle;
   entry.meetingLink = f.meetingLink;
   entry.meetingTime = f.time;
+  entry.flyerBio = f.bio;
   if (f.talkTitle) entry.title = f.talkTitle;
   if (f.institution) entry.affiliation = f.institution;
 
@@ -425,7 +476,7 @@ function getJsPDFConstructor() {
 
 async function downloadFlyer() {
   const btn = document.getElementById('btn-download-flyer');
-  const flyer = document.getElementById('flyer');
+  const flyer = document.querySelector('#flyer .flyer-sheet') || document.getElementById('flyer');
 
   if (typeof window.html2canvas !== 'function') {
     showToast('Download tools failed to load — refresh the page');
@@ -440,10 +491,14 @@ async function downloadFlyer() {
 
   try {
     const canvas = await html2canvas(flyer, {
-      scale: 3,
+      scale: 2,
       useCORS: true,
       backgroundColor: '#ffffff',
       logging: false,
+      width: 612,
+      height: 792,
+      windowWidth: 612,
+      windowHeight: 792,
     });
 
     if (JsPDF) {
@@ -468,7 +523,7 @@ async function downloadFlyer() {
     showToast('Flyer downloaded (PNG)');
   } catch (err) {
     console.error(err);
-    showToast('Download failed — remove headshot URL and try again');
+    showToast('Download failed — try a smaller headshot or use an uploaded image');
   } finally {
     btn.disabled = false;
     btn.textContent = originalLabel;
@@ -480,6 +535,23 @@ function bindEvents() {
     if (!e.target.value) return;
     const [year, id] = e.target.value.split('|');
     loadEntry(year, id);
+  });
+
+  document.getElementById('flyer-headshot').addEventListener('input', () => {
+    if (document.getElementById('flyer-headshot').value.trim()) {
+      clearUploadedHeadshot();
+    }
+    updatePreview();
+    renderLinkedIn();
+  });
+
+  document.getElementById('flyer-headshot-file').addEventListener('change', handleHeadshotFileChange);
+
+  document.getElementById('btn-clear-headshot').addEventListener('click', () => {
+    clearUploadedHeadshot();
+    document.getElementById('flyer-headshot').value = '';
+    updatePreview();
+    renderLinkedIn();
   });
 
   fields.forEach(id => {

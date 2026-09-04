@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flyer &amp; LinkedIn · ADRC REC Speaker Series</title>
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/marketing.css">
+  <link rel="stylesheet" href="css/marketing.css?v=15">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app">
@@ -48,8 +48,16 @@
           </div>
 
           <div class="form-row">
-            <label class="form-label" for="flyer-headshot">Headshot URL</label>
-            <input type="url" id="flyer-headshot" class="form-input" placeholder="https://… (photo link)">
+            <label class="form-label" for="flyer-headshot">Headshot</label>
+            <div class="headshot-options">
+              <input type="url" id="flyer-headshot" class="form-input" placeholder="Paste image URL (https://…)">
+              <div class="headshot-upload-row">
+                <label class="headshot-file-label" for="flyer-headshot-file">Upload image</label>
+                <input type="file" id="flyer-headshot-file" class="headshot-file-input" accept="image/*">
+                <button type="button" class="btn-clear-headshot" id="btn-clear-headshot">Clear</button>
+              </div>
+            </div>
+            <p class="form-hint">Use a link or upload JPG/PNG from your computer (max 5 MB).</p>
           </div>
 
           <div class="form-row">
@@ -58,18 +66,24 @@
           </div>
 
           <div class="form-row">
-            <label class="form-label" for="flyer-prof-title">Professional title</label>
-            <input type="text" id="flyer-prof-title" class="form-input" placeholder="Associate Professor of Neurology">
+            <label class="form-label" for="flyer-prof-title">Professional titles</label>
+            <textarea id="flyer-prof-title" class="form-input" rows="4" placeholder="Professor of Neurology&#10;Director, Center for Personalized Brain Health"></textarea>
+            <p class="form-hint">One title per line — matches the official ADRC flyer layout.</p>
           </div>
 
           <div class="form-row">
-            <label class="form-label" for="flyer-institution">Institution</label>
+            <label class="form-label" for="flyer-institution">Institution <span class="form-optional">(LinkedIn only)</span></label>
             <input type="text" id="flyer-institution" class="form-input" placeholder="USC Keck School of Medicine">
           </div>
 
           <div class="form-row">
             <label class="form-label" for="flyer-talk-title">Talk title</label>
             <textarea id="flyer-talk-title" class="form-input" rows="2" placeholder="Final talk title"></textarea>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="flyer-bio">Speaker / talk description</label>
+            <textarea id="flyer-bio" class="form-input" rows="6" placeholder="Brief bio and what the seminar will cover…"></textarea>
           </div>
 
           <div class="form-row form-row-split">
@@ -79,12 +93,12 @@
             </div>
             <div>
               <label class="form-label" for="flyer-time">Time</label>
-              <input type="text" id="flyer-time" class="form-input" value="Fridays · 1:00–2:00 PM Pacific Time">
+              <input type="text" id="flyer-time" class="form-input" value="1:00 P.M. – 2:00 P.M. PST">
             </div>
           </div>
 
           <div class="form-row">
-            <label class="form-label" for="flyer-link">Registration / Zoom link</label>
+            <label class="form-label" for="flyer-link">Zoom meeting link</label>
             <input type="url" id="flyer-link" class="form-input" placeholder="https://usc.zoom.us/j/…">
           </div>
 
@@ -93,63 +107,51 @@
 
         <section class="flyer-preview-panel panel">
           <h2>Flyer preview</h2>
-          <p class="panel-intro">USC ADRC newsletter-style flyer · download as a one-page PDF</p>
+          <p class="panel-intro">Official USC ADRC REC Zoom seminar flyer · download as a one-page PDF</p>
           <div class="flyer-preview-wrap">
-            <article class="flyer flyer-newsletter" id="flyer" aria-label="Seminar flyer preview">
-              <div class="flyer-sidebar" aria-hidden="true"></div>
-              <div class="flyer-page">
-                <div class="flyer-topbar">
-                  <span class="flyer-season" id="flyer-preview-season">FALL 2026</span>
-                  <span class="flyer-topbar-title">USC ADRC REC Seminar</span>
-                </div>
-                <div class="flyer-rule"></div>
-                <p class="flyer-keck">KECK SCHOOL OF MEDICINE OF USC</p>
+            <article class="flyer flyer-seminar" id="flyer" aria-label="Seminar flyer preview">
+              <div class="flyer-sheet">
+                <header class="flyer-seminar-header">
+                  <img
+                    src="assets/flyer-adrc-header-render.png"
+                    alt="ADRC Alzheimer Disease Research Center"
+                    class="flyer-adrc-logo"
+                  >
+                  <h1 class="flyer-org-title">USC Alzheimer&rsquo;s Disease Research Center (ADRC)</h1>
+                  <div class="flyer-rule-thick" aria-hidden="true"></div>
+                </header>
 
-                <div class="flyer-wordmark">
-                  <span class="flyer-wordmark-line">
-                    <span class="flyer-wordmark-usc">USC</span>
-                    <span class="flyer-wordmark-rest">Alzheimer Disease</span>
-                  </span>
-                  <span class="flyer-wordmark-sub">Research Center · REC Speaker Series</span>
-                </div>
+                <section class="flyer-event">
+                  <p class="flyer-event-line" id="flyer-preview-event-line">September 11, 2026, ADRC REC Zoom Seminar</p>
+                  <h2 class="flyer-seminar-title" id="flyer-preview-talk-title">Talk title</h2>
+                </section>
 
-                <div class="flyer-hero">
-                  <img id="flyer-hero-default" class="flyer-hero-img" src="assets/flyer-hero-default.jpg" alt="USC brain health research imagery">
-                  <img id="flyer-headshot-img" class="flyer-hero-speaker" alt="" hidden>
-                </div>
-
-                <div class="flyer-content">
-                  <h2 class="flyer-headline">YOU&rsquo;RE INVITED!</h2>
-                  <p class="flyer-lead" id="flyer-preview-lead">Join us for the ADRC REC Speaker Series.</p>
-                  <p class="flyer-body">
-                    <strong id="flyer-preview-name">Speaker Name</strong>,
-                    <span id="flyer-preview-prof-title">Professional title</span>,
-                    <span id="flyer-preview-institution">Institution</span>,
-                    will present:
-                  </p>
-                  <p class="flyer-talk-emphasis" id="flyer-preview-talk-title">&ldquo;Talk title&rdquo;</p>
-                  <div class="flyer-details">
-                    <p><strong>When:</strong> <span id="flyer-preview-date">—</span></p>
-                    <p><strong>Time:</strong> <span id="flyer-preview-time">—</span></p>
-                    <p><strong>Join:</strong> <span class="flyer-link-text" id="flyer-preview-link">—</span></p>
+                <section class="flyer-speaker-block">
+                  <div class="flyer-speaker-photo">
+                    <img id="flyer-headshot-img" class="flyer-headshot" alt="" hidden>
+                    <div id="flyer-headshot-placeholder" class="flyer-headshot-placeholder" aria-hidden="true">
+                      <span>Speaker photo</span>
+                    </div>
                   </div>
-                </div>
+                  <div class="flyer-speaker-info">
+                    <h3 class="flyer-speaker-name" id="flyer-preview-name">Speaker Name, MD</h3>
+                    <div class="flyer-speaker-titles" id="flyer-preview-titles"></div>
+                    <p class="flyer-speaker-date" id="flyer-preview-date">Friday, September 11, 2026</p>
+                    <p class="flyer-speaker-time" id="flyer-preview-time">1:00 P.M. – 2:00 P.M. PST</p>
+                    <p class="flyer-zoom-link" id="flyer-preview-link">Zoom Meeting Link</p>
+                  </div>
+                </section>
 
-                <div class="flyer-rule"></div>
-                <footer class="flyer-doc-footer">
-                  <div class="flyer-footer-brand">
-                    <svg class="flyer-footer-mark" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <rect x="3" y="3" width="74" height="74" rx="15" fill="#fff" stroke="#FFC72C" stroke-width="2.5"/>
-                      <text x="40" y="34" text-anchor="middle" fill="#990000" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="2">USC</text>
-                      <text x="40" y="56" text-anchor="middle" fill="#18181b" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1">ADRC</text>
-                    </svg>
-                    <span>USC ADRC</span>
-                  </div>
-                  <p class="flyer-footer-cta" id="flyer-preview-cta">Register for this seminar</p>
-                  <div class="flyer-footer-meta">
-                    <span class="flyer-footer-url" id="flyer-preview-footer-link">adrc.usc.edu</span>
-                    <span class="flyer-page-num">1</span>
-                  </div>
+                <section class="flyer-bio">
+                  <p id="flyer-preview-bio">Speaker bio and seminar description.</p>
+                </section>
+
+                <footer class="flyer-seminar-footer">
+                  <img
+                    src="assets/flyer-usc-footer-full.png"
+                    alt="University of Southern California"
+                    class="flyer-footer-strip"
+                  >
                 </footer>
               </div>
             </article>
@@ -177,6 +179,6 @@
   <script src="js/vendor/html2canvas.min.js?v=1"></script>
   <script src="js/vendor/jspdf.umd.min.js?v=1"></script>
   <script src="js/data-loader.js?v=1"></script>
-  <script src="js/marketing.js?v=10"></script>
+  <script src="js/marketing.js?v=16"></script>
 </body>
 </html>
