@@ -238,8 +238,8 @@
   font-size: 17px;
   font-weight: 400;
   line-height: 1.35;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .flyer-speaker-block {
@@ -330,9 +330,9 @@
   font-size: 16px;
   line-height: 1.45;
   text-align: justify;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
 }
 
 .flyer-seminar-footer {
