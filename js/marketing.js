@@ -284,6 +284,234 @@ function readForm() {
   };
 }
 
+const FLYER_FIT_BASE = {
+  bio: 16,
+  talk: 17,
+  prof: 10.5,
+  event: 18,
+  org: 20,
+  name: 16,
+  date: 15,
+  time: 15,
+  zoom: 16,
+};
+
+const FLYER_FIT_MIN = {
+  bio: 3.5,
+  talk: 6,
+  prof: 4.5,
+  event: 8,
+  org: 9,
+  name: 7,
+  date: 7,
+  time: 7,
+  zoom: 7,
+};
+
+function resetFlyerFitStyles() {
+  const sheet = document.querySelector('.flyer-sheet');
+  const selectors = [
+    '#flyer-preview-bio',
+    '#flyer-preview-talk-title',
+    '#flyer-preview-event-line',
+    '#flyer-preview-name',
+    '#flyer-preview-date',
+    '#flyer-preview-time',
+    '#flyer-preview-link',
+    '.flyer-org-title',
+    '.flyer-speaker-titles p',
+    '.flyer-event',
+    '.flyer-speaker-block',
+    '.flyer-speaker-name',
+    '.flyer-speaker-date',
+    '.flyer-speaker-time',
+    '.flyer-zoom-link',
+    '.flyer-bio',
+  ];
+
+  selectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(el => {
+      el.style.fontSize = '';
+      el.style.lineHeight = '';
+      el.style.marginTop = '';
+      el.style.marginBottom = '';
+    });
+  });
+
+  if (sheet) sheet.style.padding = '';
+
+  const photo = document.querySelector('.flyer-speaker-photo');
+  if (photo) {
+    photo.style.width = '';
+    photo.style.height = '';
+  }
+
+  const logo = document.querySelector('.flyer-adrc-logo');
+  if (logo) logo.style.height = '';
+}
+
+function flyerOverflows() {
+  const sheet = document.querySelector('.flyer-sheet');
+  const bioSection = document.querySelector('.flyer-bio');
+  const bioP = document.getElementById('flyer-preview-bio');
+
+  if (bioP && bioSection && bioP.scrollHeight > bioSection.clientHeight + 1) {
+    return true;
+  }
+
+  const clipped = [
+    document.getElementById('flyer-preview-talk-title'),
+    document.getElementById('flyer-preview-event-line'),
+    document.querySelector('.flyer-org-title'),
+    ...document.querySelectorAll('.flyer-speaker-titles p'),
+  ];
+
+  for (const el of clipped) {
+    if (el && el.scrollHeight > el.clientHeight + 1) return true;
+  }
+
+  if (sheet) {
+    const footer = document.querySelector('.flyer-seminar-footer');
+    if (footer) {
+      const sheetRect = sheet.getBoundingClientRect();
+      const footerRect = footer.getBoundingClientRect();
+      if (footerRect.bottom > sheetRect.bottom + 0.5) return true;
+    }
+  }
+
+  return false;
+}
+
+function applyFlyerFitSizes(cur) {
+  const bioP = document.getElementById('flyer-preview-bio');
+  const talkTitle = document.getElementById('flyer-preview-talk-title');
+  const eventLine = document.getElementById('flyer-preview-event-line');
+  const orgTitle = document.querySelector('.flyer-org-title');
+  const nameEl = document.getElementById('flyer-preview-name');
+  const dateEl = document.getElementById('flyer-preview-date');
+  const timeEl = document.getElementById('flyer-preview-time');
+  const zoomEl = document.getElementById('flyer-preview-link');
+
+  if (bioP) {
+    bioP.style.fontSize = `${cur.bio}px`;
+    bioP.style.lineHeight = cur.bio <= 7 ? '1.18' : cur.bio <= 10 ? '1.28' : '1.45';
+  }
+  if (talkTitle) {
+    talkTitle.style.fontSize = `${cur.talk}px`;
+    talkTitle.style.lineHeight = cur.talk <= 9 ? '1.2' : '1.35';
+  }
+  if (eventLine) eventLine.style.fontSize = `${cur.event}px`;
+  if (orgTitle) orgTitle.style.fontSize = `${cur.org}px`;
+  if (nameEl) nameEl.style.fontSize = `${cur.name}px`;
+  if (dateEl) dateEl.style.fontSize = `${cur.date}px`;
+  if (timeEl) timeEl.style.fontSize = `${cur.time}px`;
+  if (zoomEl) zoomEl.style.fontSize = `${cur.zoom}px`;
+
+  document.querySelectorAll('.flyer-speaker-titles p').forEach(p => {
+    p.style.fontSize = `${cur.prof}px`;
+    p.style.lineHeight = cur.prof <= 7 ? '1.2' : '1.4';
+  });
+}
+
+function tightenFlyerLayout(step) {
+  const sheet = document.querySelector('.flyer-sheet');
+  const event = document.querySelector('.flyer-event');
+  const speakerBlock = document.querySelector('.flyer-speaker-block');
+  const speakerInfo = document.querySelector('.flyer-speaker-info');
+  const photo = document.querySelector('.flyer-speaker-photo');
+  const logo = document.querySelector('.flyer-adrc-logo');
+
+  if (sheet) {
+    const padTop = Math.max(12, 26 - step * 2);
+    const padBottom = Math.max(8, 18 - step);
+    sheet.style.padding = `${padTop}px 36px ${padBottom}px`;
+  }
+
+  if (event) {
+    event.style.marginTop = `${Math.max(8, 22 - step * 2)}px`;
+    event.style.marginBottom = `${Math.max(6, 18 - step * 2)}px`;
+  }
+
+  if (speakerBlock) {
+    speakerBlock.style.marginBottom = `${Math.max(6, 16 - step * 2)}px`;
+  }
+
+  if (speakerInfo) {
+    const dateEl = document.querySelector('.flyer-speaker-date');
+    const timeEl = document.querySelector('.flyer-speaker-time');
+    if (dateEl) {
+      dateEl.style.marginTop = `${Math.max(4, 18 - step * 3)}px`;
+      dateEl.style.marginBottom = `${Math.max(2, 4 - step)}px`;
+    }
+    if (timeEl) {
+      timeEl.style.marginTop = '0';
+      timeEl.style.marginBottom = `${Math.max(2, 14 - step * 2)}px`;
+    }
+  }
+
+  if (photo) {
+    const height = Math.max(88, 201 - step * 14);
+    const width = Math.round(height * (184 / 201));
+    photo.style.height = `${height}px`;
+    photo.style.width = `${width}px`;
+  }
+
+  if (logo) {
+    logo.style.height = `${Math.max(22, 38 - step * 2)}px`;
+  }
+}
+
+function fitFlyerToPage() {
+  const sheet = document.querySelector('.flyer-sheet');
+  if (!sheet) return;
+
+  resetFlyerFitStyles();
+
+  const cur = { ...FLYER_FIT_BASE };
+  applyFlyerFitSizes(cur);
+  if (!flyerOverflows()) return;
+
+  const shrinkKeys = ['bio', 'prof', 'talk', 'event', 'name', 'date', 'time', 'zoom', 'org'];
+
+  for (const key of shrinkKeys) {
+    for (let size = FLYER_FIT_BASE[key]; size >= FLYER_FIT_MIN[key]; size -= 0.25) {
+      cur[key] = size;
+      applyFlyerFitSizes(cur);
+      if (!flyerOverflows()) return;
+    }
+    cur[key] = FLYER_FIT_MIN[key];
+  }
+
+  for (let step = 1; step <= 10; step += 1) {
+    tightenFlyerLayout(step);
+    applyFlyerFitSizes(cur);
+    if (!flyerOverflows()) return;
+  }
+
+  for (let scale = 0.95; scale >= 0.45; scale -= 0.025) {
+    shrinkKeys.forEach(key => {
+      cur[key] = Math.max(FLYER_FIT_MIN[key], FLYER_FIT_BASE[key] * scale);
+    });
+    applyFlyerFitSizes(cur);
+    if (!flyerOverflows()) return;
+  }
+
+  for (let bio = FLYER_FIT_MIN.bio; bio >= 3; bio -= 0.25) {
+    cur.bio = bio;
+    applyFlyerFitSizes(cur);
+    if (!flyerOverflows()) return;
+  }
+}
+
+function scheduleFlyerFit() {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      fitFlyerToPage();
+      void document.querySelector('.flyer-sheet')?.offsetHeight;
+    });
+  });
+}
+
 function updatePreview() {
   const f = readForm();
   const name = f.name || 'Speaker Name, MD';
@@ -314,15 +542,19 @@ function updatePreview() {
     speakerImg.alt = name;
     speakerImg.hidden = false;
     placeholder.hidden = true;
+    speakerImg.onload = () => scheduleFlyerFit();
     speakerImg.onerror = () => {
       speakerImg.hidden = true;
       placeholder.hidden = false;
+      scheduleFlyerFit();
     };
   } else {
     speakerImg.hidden = true;
     speakerImg.removeAttribute('src');
     placeholder.hidden = false;
   }
+
+  scheduleFlyerFit();
 }
 
 function buildLinkedInPost(variant) {
@@ -490,6 +722,15 @@ async function downloadFlyer() {
   btn.textContent = 'Preparing…';
 
   try {
+    resetFlyerFitStyles();
+    fitFlyerToPage();
+    await new Promise(resolve => {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        fitFlyerToPage();
+        requestAnimationFrame(resolve);
+      }));
+    });
+
     const canvas = await html2canvas(flyer, {
       scale: 2,
       useCORS: true,

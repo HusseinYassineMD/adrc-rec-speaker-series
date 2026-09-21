@@ -189,6 +189,7 @@
   line-height: 1.35;
   color: #111;
   background: #fff;
+  overflow: hidden;
 }
 
 .flyer-seminar-header {
@@ -237,6 +238,8 @@
   font-size: 17px;
   font-weight: 400;
   line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .flyer-speaker-block {
@@ -316,9 +319,10 @@
 }
 
 .flyer-bio {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  overflow: hidden;
 }
 
 .flyer-bio p {
@@ -326,6 +330,9 @@
   font-size: 16px;
   line-height: 1.45;
   text-align: justify;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .flyer-seminar-footer {
