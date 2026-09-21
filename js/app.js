@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-02-v12';
+const DATA_VERSION = '2026-09-21-v13';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {

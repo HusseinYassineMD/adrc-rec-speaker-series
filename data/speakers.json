@@ -1847,7 +1847,7 @@
         "name": "Hussein Yassine",
         "email": "hyassine@usc.edu",
         "date": "2026-09-11",
-        "title": "Topic TBD",
+        "title": "USC ADRC and CPBH: 2026–27 Goals, Activities, and Research Opportunities",
         "talkType": "",
         "status": "Booked",
         "semester": "Fall 2026",
@@ -1859,7 +1859,7 @@
         "name": "Bryan James",
         "email": "Bryan_James@rush.edu",
         "date": "2026-09-18",
-        "title": "Topic TBD",
+        "title": "Predictors and Consequences of the Timing and Accuracy of Clinical Dementia Diagnosis",
         "talkType": "",
         "status": "Booked",
         "semester": "Fall 2026",
@@ -1871,7 +1871,7 @@
         "name": "John Ringman",
         "email": "John.Ringman@med.usc.edu",
         "date": "2026-09-25",
-        "title": "Topic TBD",
+        "title": "Primary Tauopathies: A Review",
         "talkType": "",
         "status": "Booked",
         "semester": "Fall 2026",
@@ -2241,6 +2241,6 @@
     ]
   },
   "_meta": {
-    "lastUpdated": "2026-09-02T13:18:05-07:00"
+    "lastUpdated": "2026-09-21T15:59:00-07:00"
   }
 }
