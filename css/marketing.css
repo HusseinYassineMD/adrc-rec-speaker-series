@@ -333,7 +333,8 @@
   margin: 0;
   font-size: 16px;
   line-height: 1.45;
-  text-align: left;
+  text-align: justify;
+  text-justify: inter-word;
   overflow-wrap: normal;
   word-wrap: normal;
   word-break: normal;
