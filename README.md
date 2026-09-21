@@ -2,7 +2,9 @@
 
 Web dashboard for viewing and managing the ADRC REC speaker series schedule.
 
-**Live site:** https://husseinyassinemd.github.io/adrc-rec-speaker-series/
+**Live site:**
+- **Schedule dashboard:** https://husseinyassinemd.github.io/adrc-rec-speaker-series/
+- **Flyer & LinkedIn tool:** https://husseinyassinemd.github.io/adrc-rec-speaker-series/marketing.html
 
 ## For team members
 
