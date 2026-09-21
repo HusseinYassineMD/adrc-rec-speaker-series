@@ -395,6 +395,10 @@ function applyFlyerFitSizes(cur) {
   if (bioP) {
     bioP.style.fontSize = `${cur.bio}px`;
     bioP.style.lineHeight = cur.bio <= 7 ? '1.18' : cur.bio <= 10 ? '1.28' : '1.45';
+    bioP.style.hyphens = 'none';
+    bioP.style.webkitHyphens = 'none';
+    bioP.style.overflowWrap = 'normal';
+    bioP.style.wordBreak = 'normal';
   }
   if (talkTitle) {
     talkTitle.style.fontSize = `${cur.talk}px`;
