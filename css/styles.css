@@ -383,8 +383,15 @@ body {
 .col-speaker { width: 15%; }
 .col-affiliation { width: 12%; }
 .col-type { width: 7%; }
-.col-title { width: 28%; }
+.col-title { width: 24%; }
+.col-attendance { width: 6%; text-align: center; }
 .col-status { width: 7%; }
+
+.attendance-cell {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
 .col-recording { width: 8%; }
 .col-actions { width: 7%; }
 

@@ -93,6 +93,7 @@
                 <th class="col-affiliation">Affiliation</th>
                 <th class="col-type">Type</th>
                 <th class="col-title">Title</th>
+                <th class="col-attendance">Attendance</th>
                 <th class="col-status">Status</th>
                 <th class="col-recording">Recording</th>
                 <th class="col-actions actions-col">Actions</th>
@@ -209,6 +210,21 @@
           <div class="form-row">
             <label class="form-label" for="entry-meeting-time">Meeting time</label>
             <input type="text" id="entry-meeting-time" class="form-input" placeholder="Fridays · 1:00–2:00 PM Pacific Time">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="entry-zoom-passcode">Zoom passcode <span class="form-optional">(optional)</span></label>
+            <input type="text" id="entry-zoom-passcode" class="form-input" placeholder="e.g. 615802" inputmode="numeric">
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="entry-flyer-bio">Flyer description <span class="form-optional">(optional)</span></label>
+            <textarea id="entry-flyer-bio" class="form-input" rows="4" placeholder="Speaker bio for seminar flyer"></textarea>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="entry-attendance">Attendance <span class="form-optional">(optional)</span></label>
+            <input type="number" id="entry-attendance" class="form-input" min="0" step="1" placeholder="Live attendees">
           </div>
         </fieldset>
 

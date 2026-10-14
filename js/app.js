@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'adrc-rec-speaker-series-v3';
-const DATA_VERSION = '2026-09-21-v13';
+const DATA_VERSION = '2026-10-13-v14';
 const VERSION_KEY = 'adrc-rec-data-version';
 
 const CONFIG = {
@@ -358,6 +358,15 @@ function hasRecordingAccess(entry) {
   return Boolean((entry.recordingUrl || '').trim() || CONFIG.recordingsAccessUrl);
 }
 
+function formatAttendance(entry) {
+  if (entry.status === 'Open' || entry.name === 'Open slot') return '—';
+  const n = entry.attendance;
+  if (n === null || n === undefined || n === '') return '—';
+  const num = Number(n);
+  if (!Number.isFinite(num)) return '—';
+  return String(num);
+}
+
 function getRecordingCellHtml(entry) {
   if (!hasRecordingAccess(entry)) return '—';
 
@@ -536,6 +545,7 @@ function renderTable() {
           ${e.speakerType ? `<span class="type-badge ${typeBadgeClass}">${escapeHtml(e.speakerType)}</span>` : '—'}
         </td>
         <td class="title-cell">${escapeHtml((e.title || 'Topic TBD').replace(/^"|"$/g, ''))}</td>
+        <td class="attendance-cell">${formatAttendance(e)}</td>
         <td><span class="type-badge ${badgeClass}">${escapeHtml(statusLabel)}</span></td>
         <td class="recording-cell">${getRecordingCellHtml(e)}</td>
         <td class="actions-col">
@@ -603,6 +613,10 @@ function populateForm(entry) {
   document.getElementById('entry-headshot-url').value = entry.headshotUrl || '';
   document.getElementById('entry-meeting-link').value = entry.meetingLink || '';
   document.getElementById('entry-meeting-time').value = entry.meetingTime || 'Fridays · 1:00–2:00 PM Pacific Time';
+  document.getElementById('entry-zoom-passcode').value = entry.zoomPasscode || '';
+  document.getElementById('entry-flyer-bio').value = entry.flyerBio || '';
+  document.getElementById('entry-attendance').value =
+    typeof entry.attendance === 'number' && !Number.isNaN(entry.attendance) ? entry.attendance : '';
 
   const presetTypes = ['Invited Speaker', 'External Speaker', 'Career Development', 'Case Conference', 'National Webinar', 'Journal Club'];
   const talkSelect = document.getElementById('entry-talk-type');
@@ -622,9 +636,16 @@ function closeModal() {
   editingId = null;
 }
 
+function parseOptionalAttendance(value) {
+  if (value === '' || value == null) return undefined;
+  const n = parseInt(String(value), 10);
+  return Number.isNaN(n) ? undefined : n;
+}
+
 function getFormEntry() {
   const year = document.getElementById('entry-year').value;
   const id = document.getElementById('entry-id').value || generateId(year);
+  const existing = getEntries(year).find(e => e.id === id) || {};
 
   const sel = document.getElementById('entry-talk-type').value;
   const talkType = sel === 'Other'
@@ -643,8 +664,12 @@ function getFormEntry() {
   const headshotUrl = document.getElementById('entry-headshot-url').value.trim();
   const meetingLink = document.getElementById('entry-meeting-link').value.trim();
   const meetingTime = document.getElementById('entry-meeting-time').value.trim();
+  const zoomPasscode = document.getElementById('entry-zoom-passcode').value.trim();
+  const flyerBio = document.getElementById('entry-flyer-bio').value.trim();
+  const attendance = parseOptionalAttendance(document.getElementById('entry-attendance').value);
 
-  return {
+  const entry = {
+    ...existing,
     id,
     name: document.getElementById('entry-name').value.trim(),
     email,
@@ -653,13 +678,26 @@ function getFormEntry() {
     talkType,
     affiliation,
     speakerType,
-    status: 'Booked',
+    status: existing.status || 'Booked',
     recordingUrl,
     professionalTitle,
     headshotUrl,
     meetingLink,
     meetingTime,
+    zoomPasscode,
+    flyerBio,
   };
+
+  if (attendance !== undefined) {
+    entry.attendance = attendance;
+  } else {
+    delete entry.attendance;
+  }
+
+  if (!entry.zoomPasscode) delete entry.zoomPasscode;
+  if (!entry.flyerBio) delete entry.flyerBio;
+
+  return entry;
 }
 
 function confirmDelete(year, id) {
@@ -683,9 +721,9 @@ function exportJSON() {
 
 function exportCSV() {
   const entries = getEntries(currentYear);
-  const headers = ['Date', 'Name', 'Email', 'Affiliation', 'Speaker Type', 'Title', 'Talk Type', 'Status', 'Recording URL'];
+  const headers = ['Date', 'Name', 'Email', 'Affiliation', 'Speaker Type', 'Title', 'Talk Type', 'Status', 'Attendance', 'Recording URL'];
   const rows = entries.map(e =>
-    [e.date, e.name, e.email, e.affiliation, e.speakerType, e.title, e.talkType, e.status, e.recordingUrl]
+    [e.date, e.name, e.email, e.affiliation, e.speakerType, e.title, e.talkType, e.status, e.attendance, e.recordingUrl]
       .map(v => `"${(v || '').replace(/"/g, '""')}"`)
       .join(',')
   );

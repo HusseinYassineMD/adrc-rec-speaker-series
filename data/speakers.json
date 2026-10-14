@@ -1856,51 +1856,75 @@
       },
       {
         "id": "2026-2027-2",
-        "name": "Bryan James",
+        "name": "Bryan James, PhD",
         "email": "Bryan_James@rush.edu",
         "date": "2026-09-18",
         "title": "Predictors and Consequences of the Timing and Accuracy of Clinical Dementia Diagnosis",
-        "talkType": "",
+        "talkType": "Invited Speaker",
         "status": "Booked",
         "semester": "Fall 2026",
         "affiliation": "Rush University",
-        "speakerType": "External"
+        "speakerType": "External",
+        "attendance": 48,
+        "professionalTitle": "Associate Professor of Internal Medicine and REC Lead, Rush Alzheimer's Disease Center\nEpidemiologist, Rush University Medical Center",
+        "meetingLink": "https://usc.zoom.us/j/91005586739",
+        "zoomPasscode": "615802",
+        "meetingTime": "1:00 P.M. – 2:00 P.M. PST",
+        "flyerBio": "Dr. James is an epidemiologist at the Rush Alzheimer's Disease Center (RADC) and Associate Professor in the Department of Internal Medicine, Section of Community Epidemiologic Research, at Rush University Medical Center. His research focuses on identifying social, psychological, behavioral and medical determinants of Alzheimer's, dementia, and cognitive decline, as well as describing the societal impact of dementia. Recent focuses include cognitive impairment after hospitalization and the consequences of the timing of a clinical dementia diagnosis. At the RADC, Dr. James leads the Medicare linkage program, is the faculty lead of the Data Documentation and Distribution team overseeing data and specimen sharing (RADC Research Resource Sharing Hub: www.radc.rush.edu), is faculty co-lead of the Study Operations team, and is a member of the Data and Statistics Core. He is the Research Education Component (REC) Core leader of the Rush Alzheimer's Disease Research Center (ADRC) P30 Grant, overseeing mentorship and training."
       },
       {
         "id": "2026-2027-3",
-        "name": "John Ringman",
+        "name": "John M. Ringman, MD, MS",
         "email": "John.Ringman@med.usc.edu",
         "date": "2026-09-25",
         "title": "Primary Tauopathies: A Review",
-        "talkType": "",
+        "talkType": "Invited Speaker",
         "status": "Booked",
         "semester": "Fall 2026",
         "affiliation": "USC",
-        "speakerType": "Internal"
+        "speakerType": "Internal",
+        "attendance": 51,
+        "professionalTitle": "Helene and Lou Galen Professor of Clinical Neurology\nProfessor of Clinical Neurology\nDepartment of Neurology, Keck School of Medicine at USC",
+        "meetingLink": "https://usc.zoom.us/j/91005586739",
+        "zoomPasscode": "615802",
+        "meetingTime": "1:00 P.M. – 2:00 P.M. PST",
+        "flyerBio": "Dr. Ringman is a Clinical Professor of Neurology at the Memory and Aging Center at the Keck School of Medicine of USC. He received a bachelor's degree in psychology and Neurobiology at U.C. Berkeley before going to medical school at McGill University. He did his internship and residency at Baylor College of Medicine Houston before coming to UCLA to pursue subspecialty training in behavioral neurology. He has been involved in various clinical and research activities in dementia, including working with clinical trials. His current activities include performing studies of persons with or destined to develop familial Alzheimer's disease due to known genetic mutations, clinical research in late-onset Alzheimer's disease in association with the USC Alzheimer's Disease Research Center and seeing patients with memory or other complaints referable to neurodegenerative disease. He works with the multi-disciplinary team in the Alzheimer's Center to administer anti-amyloid therapy."
       },
       {
         "id": "2026-2027-4",
-        "name": "Daniel Nation",
+        "name": "Daniel A. Nation, PhD",
         "email": "danation@usc.edu",
         "date": "2026-10-02",
-        "title": "Topic TBD",
-        "talkType": "",
+        "title": "Cerebral Vasomotor Deficits in APOE4 Carriers at Risk for Dementia",
+        "talkType": "Invited Speaker",
         "status": "Booked",
         "semester": "Fall 2026",
         "affiliation": "USC",
-        "speakerType": "Internal"
+        "speakerType": "Internal",
+        "attendance": 38,
+        "professionalTitle": "Merle H. Bensinger Professor of Gerontology and Medicine\nLeonard Davis School of Gerontology\nProfessor of Medicine, Keck School of Medicine, University of Southern California",
+        "meetingLink": "https://usc.zoom.us/j/91005586739",
+        "zoomPasscode": "615802",
+        "meetingTime": "1:00 P.M. – 2:00 P.M. PST",
+        "flyerBio": "Daniel A. Nation, PhD, is the Merle H. Bensinger Professor of Gerontology and Medicine at USC. His research is funded by the NIH, the Alzheimer's Association, and the American Heart Association, focusing on vascular factors contributing to cognitive decline and dementia in older adults."
       },
       {
         "id": "2026-2027-5",
-        "name": "Francesca B Falzarano",
+        "name": "Francesca B. Falzarano, Ph.D.",
         "email": "falzaran@usc.edu",
         "date": "2026-10-09",
-        "title": "Topic TBD",
-        "talkType": "",
+        "title": "Identifying and Addressing the Heterogeneous Needs of Dementia Family Caregivers",
+        "talkType": "Invited Speaker",
         "status": "Booked",
         "semester": "Fall 2026",
-        "affiliation": "USC",
-        "speakerType": "Internal"
+        "affiliation": "USC Leonard Davis School of Gerontology",
+        "speakerType": "Internal",
+        "attendance": 28,
+        "professionalTitle": "Assistant Professor of Gerontology\nUSC Leonard Davis School of Gerontology\nDirector, Falzarano Family Caregiving Lab",
+        "meetingLink": "https://usc.zoom.us/j/91005586739",
+        "zoomPasscode": "615802",
+        "meetingTime": "1:00 P.M. – 2:00 P.M. PST",
+        "flyerBio": "Francesca B. Falzarano, Ph.D., is an Assistant Professor of Gerontology and Director of the Falzarano Family Caregiving Lab at the University of Southern California's Leonard Davis School of Gerontology. Her research integrates developmental science and user-centered design to examine technology-based solutions that enhance support and address the diverse needs of family caregivers. She investigates how demographic, contextual, and interpersonal factors differentially impact caregiver mental health outcomes and how needs evolve across the caregiving trajectory, from diagnosis through bereavement. Her work aims to translate empirical findings into scalable interventions that improve personalized support systems and promote psychosocial well-being among the growing population of family caregivers."
       },
       {
         "id": "2026-2027-6",
@@ -2241,6 +2265,6 @@
     ]
   },
   "_meta": {
-    "lastUpdated": "2026-09-21T15:59:00-07:00"
+    "lastUpdated": "2026-10-13T23:01:00-07:00"
   }
 }
