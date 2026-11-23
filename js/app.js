@@ -713,24 +713,45 @@ function confirmDelete(year, id) {
 
 // ── Export ──────────────────────────────────────────────────
 
+function csvCell(value) {
+  const text = value == null ? '' : String(value);
+  return `"${text.replace(/"/g, '""')}"`;
+}
+
+function entriesForCsvExport(scope) {
+  const entries = getEntries(currentYear);
+  if (scope === 'ytd') {
+    return entries.filter(e => {
+      const d = parseDate(e.date);
+      if (!d) return false;
+      const today = new Date();
+      today.setHours(23, 59, 59, 999);
+      return d <= today;
+    });
+  }
+  return entries;
+}
+
 function exportJSON() {
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   downloadBlob(blob, 'adrc-rec-speaker-series.json');
   showToastMsg('JSON exported', 'success');
 }
 
-function exportCSV() {
-  const entries = getEntries(currentYear);
+function exportCSV(scope = 'year') {
+  const entries = entriesForCsvExport(scope);
   const headers = ['Date', 'Name', 'Email', 'Affiliation', 'Speaker Type', 'Title', 'Talk Type', 'Status', 'Attendance', 'Recording URL'];
   const rows = entries.map(e =>
     [e.date, e.name, e.email, e.affiliation, e.speakerType, e.title, e.talkType, e.status, e.attendance, e.recordingUrl]
-      .map(v => `"${(v || '').replace(/"/g, '""')}"`)
+      .map(csvCell)
       .join(',')
   );
   const csv = [headers.join(','), ...rows].join('\n');
-  const blob = new Blob([csv], { type: 'text/csv' });
-  downloadBlob(blob, `adrc-rec-${currentYear}.csv`);
-  showToastMsg('CSV exported', 'success');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+  const suffix = scope === 'ytd' ? '-ytd' : '';
+  downloadBlob(blob, `adrc-rec-${currentYear}${suffix}.csv`);
+  const label = scope === 'ytd' ? 'year-to-date' : 'full year';
+  showToastMsg(`CSV exported (${entries.length} ${label} row${entries.length === 1 ? '' : 's'})`, 'success');
 }
 
 function downloadBlob(blob, filename) {
@@ -801,7 +822,8 @@ function bindEvents() {
   document.getElementById('upcoming-only').addEventListener('change', renderTable);
 
   document.getElementById('btn-export-json').addEventListener('click', exportJSON);
-  document.getElementById('btn-export-csv').addEventListener('click', exportCSV);
+  document.getElementById('btn-export-csv').addEventListener('click', () => exportCSV('year'));
+  document.getElementById('btn-export-csv-ytd').addEventListener('click', () => exportCSV('ytd'));
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeModal();
